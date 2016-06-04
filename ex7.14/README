@@ -1,0 +1,3 @@
+I added a postfix unary factorial operator, '!', requiring changes to parsePrimary in parse.go.
+
+I'm using the gamma function to compute factorials so floats can be handled and error handling avoided, which I'm not sure is correct mathematically and could expose floating point peculiarities but seems ok for the values I've tried.

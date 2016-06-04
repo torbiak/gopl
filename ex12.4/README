@@ -1,0 +1,1 @@
+Pretty-print by putting each struct, slice, or map element on its own line and indenting so that opening parens for elements of the same object are left-aligned.
