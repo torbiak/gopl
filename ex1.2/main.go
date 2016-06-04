@@ -1,4 +1,4 @@
-// Echo1 prints its command-line arguments.
+// ex1.2 prints commandline indexes and arguments, one per line.
 package main
 
 import (
@@ -7,10 +7,7 @@ import (
 )
 
 func main() {
-	var s, sep string
-	for i := 0; i < len(os.Args); i++ {
-		s += sep + os.Args[i]
-		sep = " "
+	for i, arg := range os.Args {
+		fmt.Printf("%d: %s\n", i, arg)
 	}
-	fmt.Println(s)
 }
