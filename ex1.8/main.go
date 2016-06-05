@@ -1,4 +1,5 @@
-// ex1.7 streams the content found at each specified URL to stdout.
+// ex1.8 streams the content found at each specified URL to stdout, appending
+// http:// to arguments as needed.
 package main
 
 import (
@@ -6,10 +7,14 @@ import (
 	"net/http"
 	"os"
 	"io"
+	"strings"
 )
 
 func main() {
 	for _, url := range os.Args[1:] {
+		if !strings.HasPrefix(url, "http://") {
+			url = "http://" + url
+		}
 		resp, err := http.Get(url)
 		if err != nil {
 			fmt.Fprintf(os.Stderr, "fetch: %v\n", err)
