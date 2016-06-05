@@ -1,5 +1,5 @@
-// ex1.8 streams the content found at each specified URL to stdout, appending
-// http:// to arguments as needed.
+// ex1.9 streams the content found at each specified URL to stdout, appending
+// http:// to arguments as needed, and printing the HTTP status code.
 package main
 
 import (
@@ -21,6 +21,7 @@ func main() {
 			os.Exit(1)
 		}
 		_, err = io.Copy(os.Stdout, resp.Body)
+		fmt.Printf("HTTP status: %d\n", resp.StatusCode)
 		resp.Body.Close()
 		if err != nil {
 			fmt.Fprintf(os.Stderr, "fetch: reading %s: %v\n", url, err)
