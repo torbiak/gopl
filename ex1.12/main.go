@@ -1,5 +1,6 @@
 // ex1.6 generates GIF animations of random Lissajous figures, with a
-// gradient applied on the time dimension.
+// gradient applied on the time dimension and the number of cycles to display
+// can be supplied in the url query string when running as a web server.
 package main
 
 import (
@@ -17,9 +18,13 @@ import (
 	"log"
 	"net/http"
 	"time"
+	"strconv"
+	"fmt"
 )
 
 func main() {
+	var cycles = 5     // number of complete x oscillator revolutions
+
 	// The sequence of images is deterministic unless we seed
 	// the pseudo-random number generator using the current time.
 	// Thanks to Randall McPherson for pointing out the omission.
@@ -27,18 +32,26 @@ func main() {
 
 	if len(os.Args) > 1 && os.Args[1] == "web" {
 		handler := func(w http.ResponseWriter, r *http.Request) {
-			lissajous(w)
+			cyclesStr := r.FormValue("cycles")
+			if cyclesStr != "" {
+				var err error
+				cycles, err = strconv.Atoi(cyclesStr)
+				if err != nil {
+					fmt.Fprintf(w, "bad cycles param: %s", cyclesStr, err)
+					return
+				}
+			}
+			lissajous(cycles, w)
 		}
 		http.HandleFunc("/", handler)
 		log.Fatal(http.ListenAndServe("localhost:8000", nil))
 		return
 	}
-	lissajous(os.Stdout)
+	lissajous(cycles, os.Stdout)
 }
 
-func lissajous(out io.Writer) {
+func lissajous(cycles int, out io.Writer) {
 	const (
-		cycles  = 5     // number of complete x oscillator revolutions
 		res     = 0.001 // angular resolution
 		size    = 100   // image canvas covers [-size..+size]
 		nframes = 64    // number of animation frames
@@ -57,7 +70,7 @@ func lissajous(out io.Writer) {
 	for i := 0; i < nframes; i++ {
 		rect := image.Rect(0, 0, 2*size+1, 2*size+1)
 		img := image.NewPaletted(rect, palette)
-		for t := 0.0; t < cycles*2*math.Pi; t += res {
+		for t := 0.0; t < float64(cycles)*2*math.Pi; t += res {
 			x := math.Sin(t)
 			y := math.Sin(t*freq + phase)
 			img.SetColorIndex(size+int(x*size+0.5), size+int(y*size+0.5), uint8((i % (len(palette)-1)) + 1))
