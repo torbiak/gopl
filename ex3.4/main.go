@@ -1,11 +1,12 @@
-// ex3.3 prints an svg image, coloring its vertices based on their height.
+// ex3.4 serves SVG rendering of a 3-D surface function over http.
 package main
 
 import (
 	"fmt"
 	"io"
+	"log"
 	"math"
-	"os"
+	"net/http"
 )
 
 const (
@@ -41,11 +42,13 @@ func svg(w io.Writer) {
 }
 
 func main() {
-	svg(os.Stdout)
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "image/svg+xml")
+		svg(w)
+	})
+	log.Fatal(http.ListenAndServe(":8080", nil))
 }
 
-// minmax returns the min and max values for z given the min/max values of x
-// and y and assuming a square domain.
 func minmax() (min float64, max float64) {
 	min = math.NaN()
 	max = math.NaN()
