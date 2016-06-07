@@ -1,4 +1,4 @@
-// Surface computes an SVG rendering of a 3-D surface function.
+// ex3.1 prints an svg image, ignoring non-finite vertexes.
 package main
 
 import (
