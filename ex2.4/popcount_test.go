@@ -1,5 +1,7 @@
-// ex2.3: compare popcount implementations: looping and single-expression
-// bytewise table lookups.
+// ex2.4: compare popcount implementations:
+// - looping table lookups
+// - single-expression table lookups
+// - shift value
 package popcount
 
 import (
@@ -12,6 +14,18 @@ func PopCountTableLoop(x uint64) int {
 		sum += int(pc[byte(x>>uint(i))])
 	}
 	return sum
+}
+
+func PopCountShiftValue(x uint64) int {
+	count := 0
+	mask := uint64(1)
+	for i := 0; i < 64; i++ {
+		if x&mask > 0 {
+			count++
+		}
+		x >>= 1
+	}
+	return count
 }
 
 // pc[i] is the population count of i.
@@ -47,4 +61,8 @@ func BenchmarkTable(b *testing.B) {
 
 func BenchmarkTableLoop(b *testing.B) {
 	bench(b, PopCountTableLoop)
+}
+
+func BenchmarkShiftValue(b *testing.B) {
+	bench(b, PopCountShiftValue)
 }
