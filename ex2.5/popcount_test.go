@@ -2,6 +2,7 @@
 // - looping table lookups
 // - single-expression table lookups
 // - shift value
+// - clear rightmost
 package popcount
 
 import (
@@ -24,6 +25,15 @@ func PopCountShiftValue(x uint64) int {
 			count++
 		}
 		x >>= 1
+	}
+	return count
+}
+
+func PopCountClearRightmost(x uint64) int {
+	count := 0
+	for x != 0 {
+		x &= x - 1
+		count++
 	}
 	return count
 }
@@ -65,4 +75,8 @@ func BenchmarkTableLoop(b *testing.B) {
 
 func BenchmarkShiftValue(b *testing.B) {
 	bench(b, PopCountShiftValue)
+}
+
+func BenchmarkClearRightmost(b *testing.B) {
+	bench(b, PopCountClearRightmost)
 }
