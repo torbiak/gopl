@@ -1,10 +1,11 @@
-// Mandelbrot emits a PNG image of the Mandelbrot fractal.
+// ex3.5 emits a full-color PNG image of the Mandelbrot fractal.
 package main
 
 import (
 	"image"
 	"image/color"
 	"image/png"
+	"math"
 	"math/cmplx"
 	"os"
 )
@@ -36,7 +37,15 @@ func mandelbrot(z complex128) color.Color {
 	for n := uint8(0); n < iterations; n++ {
 		v = v*v + z
 		if cmplx.Abs(v) > 2 {
-			return color.Gray{255 - contrast*n}
+			switch {
+			case n > 50: // dark red
+				return color.RGBA{100, 0, 0, 255}
+			default: 
+				// logarithmic blue gradient to show small differences on the
+				// periphery of the fractal.
+				logScale := math.Log(float64(n))/math.Log(float64(iterations))
+				return color.RGBA{0, 0, 255 - uint8(logScale*255), 255}
+			}
 		}
 	}
 	return color.Black
