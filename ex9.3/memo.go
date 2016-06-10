@@ -1,7 +1,8 @@
-// Package memo provides a concurrency-safe non-blocking memoization
-// of a function.  Requests for different keys proceed in parallel.
-// Concurrent requests for the same key block until the first completes.
-// This implementation uses a monitor goroutine.
+// ex9.3 provides cancellable memoization of a function.
+//
+// Requests for different keys proceed in parallel. Concurrent requests for the
+// same key block until the first completes. This implementation uses a monitor
+// goroutine.
 package memo
 
 import (

@@ -1,6 +1,7 @@
-// Xmlselect prints the text of selected elements of an XML document.
-// It supports CSS-style attribute selectors. Values are optional and must be a
-// valid Go identifier or a quoted string.
+// ex7.17 provides CSS-style selectors for XML.
+//
+// CSS-style attribute selectors are supported. Values are optional and must be
+// a valid Go identifier or a quoted string.
 //
 // Examples:
 //

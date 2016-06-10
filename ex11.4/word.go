@@ -1,4 +1,4 @@
-// Package word provides utilities for word games.
+// ex11.4 tests IsPalindrome on strings including punctuation.
 package word
 
 import "unicode"

@@ -1,4 +1,5 @@
-// Surface computes an SVG rendering of a 3-D surface function.
+// ex5.6 computes an SVG rendering of a 3-D surface function, using a bare
+// return statement.
 package main
 
 import (

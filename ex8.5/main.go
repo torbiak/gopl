@@ -1,4 +1,4 @@
-// Mandelbrot emits a PNG image of the Mandelbrot fractal.
+// ex8.5 is a parallellized Mandelbrot fractal generator.
 package main
 
 import (

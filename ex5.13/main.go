@@ -1,4 +1,4 @@
-// Save a local mirror of a website.
+// ex5.13 saves a local mirror of a website.
 //
 // Based on gopl.io/ch5/findlinks3
 package main

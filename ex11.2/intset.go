@@ -1,3 +1,4 @@
+// ex11.2 tests bit-vector and map-based IntSet implementations.
 package main
 
 type IntSet interface {

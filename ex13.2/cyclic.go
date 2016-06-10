@@ -1,3 +1,4 @@
+// ex13.2 determines if a value is cyclic.
 package cyclic
 
 import (

@@ -1,3 +1,4 @@
+// ex8.11 prints the first HTTP response received.
 package main
 
 import (

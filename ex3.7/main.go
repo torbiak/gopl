@@ -1,5 +1,5 @@
 // ex3.7 visualizes how many iterations it takes to find complex roots of a
-// quartic equation using Newtown's method, using different colors for
+// quartic equation using Newton's method, using different colors for
 // different roots.
 package main
 

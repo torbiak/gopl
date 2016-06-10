@@ -1,3 +1,4 @@
+// ex11.7 benchmarks IntSet implementations.
 package main
 
 type IntSet interface {

@@ -1,5 +1,3 @@
-// Package sexpr provides a means for converting Go objects to and
-// from S-expressions.
 package sexpr
 
 import (

@@ -1,3 +1,4 @@
+// ex12.3 is a codec for s-expressions.
 package sexpr
 
 import (

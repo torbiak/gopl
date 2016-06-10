@@ -1,3 +1,4 @@
+// ex10.2 detects and reads zip and tar archives.
 package arprint
 
 import (

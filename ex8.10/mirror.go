@@ -1,7 +1,6 @@
-// Mirror a website to a given depth using multiple goroutines and rewriting
-// local links.
+// ex8.10 is a web-mirroring tool that can be gracefully interrupted using ctrl-c.
 //
-// Added the ability to gracefully interrupt using ctrl-c to ex8.7.
+// Base on ex8.7.
 package main
 
 import (

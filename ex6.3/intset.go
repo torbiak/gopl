@@ -1,4 +1,4 @@
-// Package intset provides a set of integers based on a bit vector.
+// ex6.3 is a bit vector integer set with binary set operations.
 package main
 
 import (

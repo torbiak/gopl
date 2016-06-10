@@ -1,4 +1,4 @@
-// ex3.2 prints an SVG rendering of a 3-D surface function.
+// ex3.2 prints an SVG rendering of an eggbox or saddle.
 package main
 
 import (

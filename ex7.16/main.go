@@ -1,6 +1,7 @@
+// ex7.16 is a web-based calculator.
+//
 // Evaluate an expression for http clients, accepting `expr` and `env` as query
 // parameters, eg: curl 'localhost:8080/?expr=x*y&env=x=3%20y=4'
-
 package main
 
 import (

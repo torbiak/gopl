@@ -1,4 +1,4 @@
-// ex8.12 is a server that lets clients chat with each other.
+// ex8.15 is a chat server that skips clients that are slow to process writes.
 package main
 
 import (
@@ -6,10 +6,13 @@ import (
 	"fmt"
 	"log"
 	"net"
+	"time"
 )
 
+const timeout = 10*time.Second
+
 type client struct {
-	Out chan<- string // an outgoing message channel
+	Out chan<- string // outgoing message channel
 	Name string
 }
 
@@ -28,7 +31,11 @@ func broadcaster() {
 			// Broadcast incoming message to all
 			// clients' outgoing message channels.
 			for cli := range clients {
-				cli.Out <- msg
+				select {
+				case cli.Out <- msg:
+				default:
+					// Skip client if it's reading messages slowly.
+				}
 			}
 
 		case cli := <-entering:
@@ -46,20 +53,38 @@ func broadcaster() {
 }
 
 func handleConn(conn net.Conn) {
-	ch := make(chan string) // outgoing client messages
-	go clientWriter(conn, ch)
+	out := make(chan string, 10) // outgoing client messages
+	go clientWriter(conn, out)
+	in := make(chan string) // incoming client messages
+	go clientReader(conn, in)
 
-	who := conn.RemoteAddr().String()
-	cli := client{ch, who}
-	ch <- "You are " + who
+	var who string
+	nameTimer := time.NewTimer(timeout)
+	out <- "Enter your name:"
+	select {
+	case name := <-in:
+		who = name
+	case <-nameTimer.C:
+		conn.Close()
+		return
+	}
+	cli := client{out, who}
+	out <- "You are " + who
 	messages <- who + " has arrived"
 	entering <- cli
+	idle := time.NewTimer(timeout)
 
-	input := bufio.NewScanner(conn)
-	for input.Scan() {
-		messages <- who + ": " + input.Text()
+Loop:
+	for {
+		select {
+		case msg := <-in:
+			messages <- who + ": " + msg
+			idle.Reset(timeout)
+		case <-idle.C:
+			conn.Close()
+			break Loop
+		}
 	}
-	// NOTE: ignoring potential errors from input.Err()
 
 	leaving <- cli
 	messages <- who + " has left"
@@ -70,6 +95,14 @@ func clientWriter(conn net.Conn, ch <-chan string) {
 	for msg := range ch {
 		fmt.Fprintln(conn, msg) // NOTE: ignoring network errors
 	}
+}
+
+func clientReader(conn net.Conn, ch chan<- string) {
+	input := bufio.NewScanner(conn)
+	for input.Scan() {
+		ch <- input.Text()
+	}
+	// NOTE: ignoring potential errors from input.Err()
 }
 
 

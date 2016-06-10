@@ -1,3 +1,4 @@
+// ex5.10 sorts courses topologically based on hard-coded dependencies.
 package main
 
 import (

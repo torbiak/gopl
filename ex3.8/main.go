@@ -1,4 +1,4 @@
-// ex3.5 emits a full-color PNG image of the Mandelbrot fractal.
+// ex3.8 compares different numeric types when rendering fractals.
 package main
 
 import (

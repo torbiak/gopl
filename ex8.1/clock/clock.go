@@ -1,4 +1,4 @@
-// Clock is a TCP server that periodically writes the time.
+// clock is a TCP server that periodically writes the time.
 package main
 
 import (

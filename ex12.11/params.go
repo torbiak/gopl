@@ -1,4 +1,4 @@
-// Package params provides a reflection-based parser for URL parameters.
+// ex12.11 provides a reflection-based codec for URL query parameters.
 package params
 
 import (

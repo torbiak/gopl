@@ -1,3 +1,4 @@
+// ex7.11 adds CRUD http endpoints to a simple PriceDB server.
 package main
 
 import (

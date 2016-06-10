@@ -1,3 +1,4 @@
+// ex7.2 wraps a writer to count written words.
 package counter
 
 import (

@@ -1,4 +1,4 @@
-// Tempflag prints the value of its -temp (temperature) flag.
+// ex7.6 prints flag arguments for different temperature scales, including Kelvin.
 package main
 
 import (

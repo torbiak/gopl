@@ -1,3 +1,4 @@
+// ex5.15 explores variadic min and max functions.
 package main
 
 import (

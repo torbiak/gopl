@@ -1,3 +1,4 @@
+// ex13.4 provides a bzip2 writer using the system's bzip2 binary.
 package bzip
 
 import (

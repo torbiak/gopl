@@ -1,3 +1,4 @@
+// ex7.4 provides a simple string reader.
 package reader
 
 import (

@@ -1,4 +1,4 @@
-// ex1.8 streams the content found at each specified URL to stdout, appending
+// ex1.8 streams the content found at each specified URL to stdout, and appends
 // http:// to arguments as needed.
 package main
 

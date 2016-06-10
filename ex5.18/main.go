@@ -1,4 +1,4 @@
-// Fetch saves the contents of a URL into a local file.
+// ex5.18 saves the contents of a URL to a local file.
 package main
 
 import (

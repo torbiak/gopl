@@ -1,3 +1,4 @@
+// ex7.10 uses sort.Interface to detect palindromes.
 package palindrome
 
 import (

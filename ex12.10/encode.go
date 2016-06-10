@@ -1,3 +1,5 @@
+// ex12.10 is a s-expression codec that can decode booleans, floating point
+// numbers, and registered interface values.
 package sexpr
 
 import (

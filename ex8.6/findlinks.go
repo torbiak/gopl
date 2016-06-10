@@ -1,3 +1,5 @@
+// ex8.6 is a depth-limited web crawler.
+//
 // Use a WaitGroup to determine when the work is done, the `tokens` chan as a
 // semaphore to limit concurrent requests, and a mutex around the `seen` map to
 // avoid concurrent reads and writes.

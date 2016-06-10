@@ -1,4 +1,4 @@
-// Package intset provides a set of integers based on a bit vector.
+// ex6.5 is a variable-word-size bit vector intset.
 package main
 
 import (

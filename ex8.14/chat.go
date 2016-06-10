@@ -1,4 +1,4 @@
-// Chat is a server that lets clients chat with each other.
+// ex8.14 is a chat server that prompts clients for a name upon connection.
 package main
 
 import (

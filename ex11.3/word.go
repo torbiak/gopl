@@ -1,4 +1,4 @@
-// Package word provides utilities for word games.
+// ex11.3 tests IsPalindrome on random non-palindromes.
 package word
 
 import "unicode"

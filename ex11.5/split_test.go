@@ -1,3 +1,4 @@
+// ex11.5 tests strings.Split using a table-driven test.
 package main
 
 import (

@@ -1,4 +1,4 @@
-// Outline prints the outline of an HTML document tree.
+// ex5.12 prints the outline of an HTML document tree.
 package main
 
 import (

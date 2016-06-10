@@ -1,4 +1,4 @@
-// Package intset provides a set of integers based on a bit vector.
+// ex6.2 is a integer set with a variadic AddAll method.
 package main
 
 import (

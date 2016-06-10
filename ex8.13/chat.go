@@ -1,4 +1,4 @@
-// Chat is a server that lets clients chat with each other.
+// ex8.13 is a chat server that disconnects inactive clients.
 package main
 
 import (

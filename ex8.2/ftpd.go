@@ -1,4 +1,4 @@
-// ftpd is a minimal ftp server as per section 5.1 of RFC 959:
+// ex8.2 is a minimal ftp server as per section 5.1 of RFC 959.
 //
 //   TYPE - ASCII Non-print
 //   MODE - Stream

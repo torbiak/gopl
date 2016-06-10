@@ -1,4 +1,4 @@
-// Find html element node by id attribute.
+// ex5.8 finds an html element node by id attribute.
 package main
 
 import (

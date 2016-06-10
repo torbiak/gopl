@@ -1,4 +1,5 @@
-// Package params provides a reflection-based parser for URL parameters.
+// ex12.12 provides a URL query parameter codec with validation triggered by
+// struct tags.
 package params
 
 import (

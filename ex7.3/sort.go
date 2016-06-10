@@ -1,4 +1,5 @@
-// Package treesort provides insertion sort using an unbalanced binary tree.
+// ex7.3 provides insertion sort using an unbalanced binary tree, and a String
+// method to visualize the tree.
 package treesort
 
 import (

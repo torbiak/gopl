@@ -1,9 +1,5 @@
-// Copyright © 2016 Alan A. A. Donovan & Brian W. Kernighan.
-// License: https://creativecommons.org/licenses/by-nc-sa/4.0/
-
-// See page 224.
-
-// Reverb2 is a TCP server that simulates an echo.
+// ex8.4 is a reverb server that uses sync.WaitGroup to choose when to close
+// connections.
 package main
 
 import (
@@ -25,7 +21,6 @@ func echo(c net.Conn, shout string, delay time.Duration, wg sync.WaitGroup) {
 	wg.Done()
 }
 
-//!+
 func handleConn(c net.Conn) {
 	wg := sync.WaitGroup{}
 	input := bufio.NewScanner(c)
@@ -37,8 +32,6 @@ func handleConn(c net.Conn) {
 	// NOTE: ignoring potential errors from input.Err()
 	c.Close()
 }
-
-//!-
 
 func main() {
 	l, err := net.Listen("tcp", "localhost:8000")

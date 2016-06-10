@@ -1,3 +1,4 @@
+// ex8.9 is a concurrent du clone.
 package main
 
 import (

@@ -1,5 +1,5 @@
-// Mirror a website to a given depth using multiple goroutines and rewriting
-// local links.
+// ex8.7 mirrors a website to a given depth using multiple goroutines and
+// rewrites local links.
 package main
 
 import (

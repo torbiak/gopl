@@ -1,5 +1,5 @@
-// Dup2 prints the count and text of lines that appear more than once
-// in the input.  It reads from stdin or from a list of named files.
+// ex1.4 prints the count and text of lines that appear more than once in the
+// input. It reads from stdin or from a list of named files.
 package main
 
 import (

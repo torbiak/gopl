@@ -1,3 +1,4 @@
+// ex10.4 lists go packages that transitively depend on the given packages.
 package main
 
 import (

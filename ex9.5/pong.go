@@ -1,3 +1,4 @@
+// ex9.5 tests of performance of ping-ponging goroutines.
 package main
 
 import (

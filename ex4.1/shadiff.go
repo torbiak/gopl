@@ -1,4 +1,4 @@
-// shadiff computes the number of bits different between two hashes.
+// ex4.1 computes the number of bits different between two hashes.
 package shadiff
 
 import (

@@ -1,4 +1,4 @@
-// Package equalish provides a deep equivalence relation for arbitrary values.
+// ex13.1 provides a deep equivalence relation for arbitrary values.
 package equalish
 
 import (

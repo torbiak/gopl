@@ -1,4 +1,4 @@
-// ex3.9 serves fractals over http.
+// ex3.9 serves images of fractals over http.
 //
 // Query parameters (interpreted as floating point numbers):
 //   xmin, xmax, ymin, and ymax specify the domain

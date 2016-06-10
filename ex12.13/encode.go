@@ -1,3 +1,4 @@
+// ex12.13 is a s-expression codec that uses names found in struct tags.
 package sexpr
 
 import (

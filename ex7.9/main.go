@@ -1,3 +1,5 @@
+// ex7.9 serves an html table with a stable column sort.
+//
 // I used the Person type from the sort package's first example for ex7.8, so
 // I'm also using it here instead of the Track type as specified in ex7.9.
 package main

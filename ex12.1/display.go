@@ -1,4 +1,4 @@
-// Package display provides a means to display structured data.
+// ex12.1 uses reflection to print arbitrary values.
 package display
 
 import (

@@ -1,4 +1,4 @@
-// go test -bench=. -benchtime=1s gopl/popcount
+// ex9.2 lazily initializes the popcount LUT.
 package popcount
 
 import (

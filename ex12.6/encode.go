@@ -1,3 +1,4 @@
+// ex12.6 is an s-expression codec that doesn't encode zero values.
 package sexpr
 
 import (

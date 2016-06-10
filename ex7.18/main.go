@@ -1,3 +1,5 @@
+// ex7.18 parses XML into a tree of nodes, using the token-based API of
+// encoding/xml.
 package main
 
 import (

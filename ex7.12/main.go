@@ -1,3 +1,4 @@
+// ex7.12 convert's PriceDB list output to an html table.
 package main
 
 import (

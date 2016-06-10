@@ -1,4 +1,5 @@
 // ex1.3 compares string concatenation techniques.
+//
 // Run with go test -bench=.
 package concat_test
 

@@ -1,4 +1,4 @@
-// ex3.5 emits a full-color PNG image of the Mandelbrot fractal.
+// ex3.5 emits a supersampled image of the Mandelbrot fractal.
 package main
 
 import (

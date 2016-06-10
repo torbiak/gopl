@@ -1,3 +1,4 @@
+// ex8.8 is a reverb server that disconnects inactive clients.
 package main
 
 import (

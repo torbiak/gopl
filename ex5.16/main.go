@@ -1,3 +1,4 @@
+// ex5.16 provides a variadic string-joining function.
 package main
 
 import (

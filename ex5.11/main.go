@@ -1,3 +1,4 @@
+// ex5.11 reports on cycles in course dependencies.
 package main
 
 import (
@@ -11,6 +12,7 @@ var prereqs = map[string][]string{
 	"algorithms": {"data structures"},
 	"calculus":   {"linear algebra"},
 	"linear algebra": {"calculus"},
+	// uncomment line below to introduce a dependency cycle.
 	//"intro to programming": {"data structures"},
 
 	"compilers": {

@@ -1,4 +1,4 @@
-// Package intset provides a set of integers based on a bit vector.
+// ex6.4 is an integer set with an Elems method.
 package main
 
 import (

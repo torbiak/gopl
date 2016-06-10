@@ -1,3 +1,4 @@
+// ex3.12 determines if strings are anagrams of each other.
 package anagram
 
 func isAnagram(a, b string) bool {

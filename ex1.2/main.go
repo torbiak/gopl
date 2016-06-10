@@ -1,4 +1,4 @@
-// ex1.2 prints commandline indexes and arguments, one per line.
+// ex1.2 prints commandline indexes and arguments.
 package main
 
 import (

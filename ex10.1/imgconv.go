@@ -1,3 +1,4 @@
+// ex10.1 converts images to between jpg, png, and gif formats.
 package main
 
 import (

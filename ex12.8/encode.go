@@ -1,3 +1,4 @@
+// ex12.8 can unmarshall s-expressions from an io.Reader.
 package sexpr
 
 import (

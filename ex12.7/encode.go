@@ -1,3 +1,4 @@
+// ex12.7 provides a streaming decoder for s-expressions.
 package sexpr
 
 import (

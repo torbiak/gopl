@@ -1,4 +1,4 @@
-// Package bank provides a concurrency-safe bank with one account.
+// ex9.1 provides a concurrency-safe bank, with withdrawals.
 package bank
 
 type Withdrawal struct {

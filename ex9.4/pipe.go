@@ -1,3 +1,4 @@
+// ex9.4 tests the performance of goroutine pipelines.
 package main
 
 func pipeline(stages int) (in chan int, out chan int) {

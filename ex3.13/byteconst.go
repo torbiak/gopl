@@ -1,3 +1,4 @@
+// ex3.13 is a short definition of byte unit constants.
 package byteconst
 
 const (

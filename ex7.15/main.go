@@ -1,3 +1,4 @@
+// ex7.15 evaluates an expression using given variable bindings.
 package main
 
 import (

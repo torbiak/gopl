@@ -1,4 +1,4 @@
-// ex3.11 inserts commas into floating point strings with an optional sign
+// ex3.11 inserts commas into floating point strings with an optional sign,
 // given as command-line arguments.
 package main
 

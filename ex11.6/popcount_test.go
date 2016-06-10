@@ -1,3 +1,4 @@
+// ex11.6 benchmarks popcount implementations.
 package popcount
 
 import (

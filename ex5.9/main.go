@@ -1,4 +1,4 @@
-// Expand shell-style variable references on stdin.
+// ex5.9 expands shell-style variable references on stdin.
 package main
 
 import (

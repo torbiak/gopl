@@ -1,3 +1,4 @@
+// ex7.5 provides a LimitReader that reports EOF at a given offset.
 package reader
 
 import (

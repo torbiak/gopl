@@ -1,5 +1,5 @@
-// ex1.9 streams the content found at each specified URL to stdout, appending
-// http:// to arguments as needed, and printing the HTTP status code.
+// ex1.9 streams the content found at each specified URL to stdout and prints
+// the HTTP status code.
 package main
 
 import (

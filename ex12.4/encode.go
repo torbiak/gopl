@@ -1,3 +1,4 @@
+// ex12.4 is a codec for s-expressions, with pretty-printing.
 package sexpr
 
 import (

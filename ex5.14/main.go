@@ -1,4 +1,4 @@
-// Print a random course's prerequisites, recursively.
+// ex5.14 prints a random course's prerequisites, recursively.
 package main
 
 import (

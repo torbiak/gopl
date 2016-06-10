@@ -1,4 +1,4 @@
-// Charcount computes counts of Unicode characters.
+// ex11.1 computes counts of Unicode characters, and includes tests.
 package main
 
 import (

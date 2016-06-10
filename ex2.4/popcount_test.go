@@ -1,7 +1,5 @@
-// ex2.4: compare popcount implementations:
-// - looping table lookups
-// - single-expression table lookups
-// - shift value
+// ex2.4: compare popcount implementations, including looping table lookups and
+// shift value.
 package popcount
 
 import (

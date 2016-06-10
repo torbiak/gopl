@@ -1,4 +1,4 @@
-// Find html element node by id attribute.
+// ex5.17 uses a variadic ElementsByTagName function to find html nodes.
 package main
 
 import (
