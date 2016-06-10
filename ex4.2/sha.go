@@ -1,3 +1,4 @@
+// ex4.2 prints the SHA hash of stdin.
 package main
 
 import (
