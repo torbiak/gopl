@@ -1,8 +1,4 @@
-package main
-
-import (
-	"fmt"
-)
+package anagram
 
 func isAnagram(a, b string) bool {
 	aFreq := make(map[rune]int)
@@ -24,9 +20,4 @@ func isAnagram(a, b string) bool {
 		}
 	}
 	return true
-}
-
-func main() {
-	fmt.Println(isAnagram("aba", "baa"))
-	fmt.Println(isAnagram("aaa", "baa"))
 }
