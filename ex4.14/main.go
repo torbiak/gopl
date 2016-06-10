@@ -1,3 +1,5 @@
+// ex4.14 caches a github repository's issues and serves a barebones
+// representation of them over http.
 package main
 
 import (
@@ -8,8 +10,6 @@ import (
 	"os"
 	"strconv"
 	"strings"
-
-	"gopl.io/ch4/github"
 )
 
 var issueListTemplate = template.Must(template.New("issueList").Parse(`
@@ -44,17 +44,17 @@ var issueTemplate = template.Must(template.New("issue").Parse(`
 `))
 
 type IssueCache struct {
-	Issues         []github.Issue
-	IssuesByNumber map[int]github.Issue
+	Issues         []Issue
+	IssuesByNumber map[int]Issue
 }
 
 func NewIssueCache(owner, repo string) (ic IssueCache, err error) {
-	issues, err := github.GetIssues(owner, repo)
+	issues, err := GetIssues(owner, repo)
 	if err != nil {
 		return
 	}
 	ic.Issues = issues
-	ic.IssuesByNumber = make(map[int]github.Issue, len(issues))
+	ic.IssuesByNumber = make(map[int]Issue, len(issues))
 	for _, issue := range issues {
 		ic.IssuesByNumber[issue.Number] = issue
 	}
@@ -97,7 +97,7 @@ func (ic IssueCache) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	if len(os.Args) != 3 {
-		fmt.Fprintf(os.Stderr, "usage: githubserver OWNER REPO")
+		fmt.Fprintln(os.Stderr, "usage: githubserver OWNER REPO")
 		os.Exit(1)
 	}
 	owner := os.Args[1]
@@ -108,6 +108,6 @@ func main() {
 		log.Fatal(err)
 	}
 
-	http.Handle("/issues/", issueCache)
+	http.Handle("/", issueCache)
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
