@@ -1,32 +1,82 @@
-// ex3.5 emits a full-color PNG image of the Mandelbrot fractal.
+// ex3.9 serves fractals over http.
+//
+// Query parameters (interpreted as floating point numbers):
+//   xmin, xmax, ymin, and ymax specify the domain
+//   zoom: modify the domain to zoom in (for values greater than 1) or out
 package main
 
 import (
 	"image"
 	"image/color"
 	"image/png"
+	"log"
 	"math"
 	"math/cmplx"
-	"os"
+	"strconv"
+	"net/http"
+	"fmt"
 )
 
 func main() {
 	const (
-		xmin, ymin, xmax, ymax = -2, -2, +2, +2
-		width, height          = 1024, 1024
+		width, height = 1024, 1024
 	)
-
-	img := image.NewRGBA(image.Rect(0, 0, width, height))
-	for py := 0; py < height; py++ {
-		y := float64(py)/height*(ymax-ymin) + ymin
-		for px := 0; px < width; px++ {
-			x := float64(px)/width*(xmax-xmin) + xmin
-			z := complex(x, y)
-			// Image point (px, py) represents complex value z.
-			img.Set(px, py, mandelbrot(z))
-		}
+	params := map[string]float64{
+		"xmin": -2,
+		"xmax": 2,
+		"ymin": -2,
+		"ymax": 2,
+		"zoom": 1,
 	}
-	png.Encode(os.Stdout, img) // NOTE: ignoring errors
+
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		for name := range params {
+			s := r.FormValue(name)
+			if s == "" {
+				continue
+			}
+			f, err := strconv.ParseFloat(s, 64)
+			if err != nil {
+				http.Error(w, fmt.Sprintf("query param %s: %s", name, err), http.StatusBadRequest)
+				return
+			}
+			params[name] = f
+		}
+		if params["xmax"] <= params["xmin"] || params["ymax"] <= params["ymin"] {
+			http.Error(w, fmt.Sprintf("min coordinate greater than max"), http.StatusBadRequest)
+			return
+		}
+		xmin := params["xmin"]
+		xmax := params["xmax"]
+		ymin := params["ymin"]
+		ymax := params["ymax"]
+		zoom := params["zoom"]
+
+		lenX := xmax - xmin
+		midX := xmin + lenX/2
+		xmin = midX - lenX/2/zoom
+		xmax = midX + lenX/2/zoom
+		lenY := ymax - ymin
+		midY := ymin + lenY/2
+		ymin = midY - lenY/2/zoom
+		ymax = midY + lenY/2/zoom
+
+		img := image.NewRGBA(image.Rect(0, 0, width, height))
+		for py := 0; py < height; py++ {
+			y := float64(py)/height*(ymax-ymin) + ymin
+			for px := 0; px < width; px++ {
+				x := float64(px)/width*(xmax-xmin) + xmin
+				z := complex(x, y)
+				// Image point (px, py) represents complex value z.
+				img.Set(px, py, mandelbrot(z))
+			}
+		}
+		err := png.Encode(w, img)
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+		}
+	})
+	log.Fatal(http.ListenAndServe(":8080", nil))
 }
 
 func mandelbrot(z complex128) color.Color {
