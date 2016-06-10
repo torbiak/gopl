@@ -1,8 +1,5 @@
-package main
-
-import (
-	"fmt"
-)
+// ex4.5 dedupes a slice of strings.
+package unique
 
 func unique(strs []string) []string {
 	w := 0 // index of last written string
@@ -14,9 +11,4 @@ func unique(strs []string) []string {
 		strs[w] = s
 	}
 	return strs[:w+1]
-}
-
-func main() {
-	s := []string{"a", "a", "b", "c", "c", "c", "d", "d", "e"}
-	fmt.Println(unique(s))
 }
