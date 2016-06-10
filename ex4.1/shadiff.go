@@ -1,8 +1,8 @@
-package main
+// shadiff computes the number of bits different between two hashes.
+package shadiff
 
 import (
 	"crypto/sha256"
-	"fmt"
 )
 
 // 101 & 101-1
@@ -33,13 +33,10 @@ func bitDiff(a, b []byte) int {
 	return count
 }
 
-func shaBitDiff(a, b []byte) int {
+// ShaBitDiff returns the number of bits that are different in the SHA256
+// hashes of two buffers.
+func ShaBitDiff(a, b []byte) int {
 	shaA := sha256.Sum256(a)
 	shaB := sha256.Sum256(b)
 	return bitDiff(shaA[:], shaB[:])
-}
-
-func main() {
-	fmt.Println(bitDiff([]byte{'\001'}, []byte{'\007'}))
-	fmt.Println(shaBitDiff([]byte{'\001'}, []byte{'\007'}))
 }
