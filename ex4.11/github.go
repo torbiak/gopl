@@ -6,11 +6,15 @@
 
 // Package github provides a Go API for the GitHub issue tracker.
 // See https://developer.github.com/v3/search/#search-issues.
-package github
+package main
 
-import "time"
+import (
+	"fmt"
+	"time"
+)
 
 const IssuesURL = "https://api.github.com/search/issues"
+const APIURL = "https://api.github.com"
 
 type IssuesSearchResult struct {
 	TotalCount int `json:"total_count"`
@@ -25,6 +29,10 @@ type Issue struct {
 	User      *User
 	CreatedAt time.Time `json:"created_at"`
 	Body      string    // in Markdown format
+}
+
+func (i Issue) CacheURL() string {
+	return fmt.Sprintf("/issues/%d", i.Number)
 }
 
 type User struct {

@@ -1,3 +1,10 @@
+// ex4.11 is a command-line client for github issues.
+//
+// gopl.io/ch4/github has been copied to this package and extended.
+//
+// The environment variables GITHUB_USER and GITHUB_PASS are used for
+// authentication.
+//
 package main
 
 import (
@@ -7,12 +14,10 @@ import (
 	"log"
 	"os"
 	"os/exec"
-
-	"gopl.io/ch4/github"
 )
 
 func search(query []string) {
-	result, err := github.SearchIssues(query)
+	result, err := SearchIssues(query)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -22,11 +27,8 @@ func search(query []string) {
 	}
 }
 
-func create(owner, repo, number string) {
-}
-
 func read(owner, repo, number string) {
-	issue, err := github.GetIssue(owner, repo, number)
+	issue, err := GetIssue(owner, repo, number)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -54,7 +56,7 @@ func edit(owner string, repo string, number string) {
 	defer tempfile.Close()
 	defer os.Remove(tempfile.Name())
 
-	issue, err := github.GetIssue(owner, repo, number)
+	issue, err := GetIssue(owner, repo, number)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -87,21 +89,21 @@ func edit(owner string, repo string, number string) {
 		log.Fatal(err)
 	}
 
-	_, err = github.EditIssue(owner, repo, number, fields)
+	_, err = EditIssue(owner, repo, number, fields)
 	if err != nil {
 		log.Fatal(err)
 	}
 }
 
 func close_(owner string, repo string, number string) {
-	_, err := github.EditIssue(owner, repo, number, map[string]string{"state": "closed"})
+	_, err := EditIssue(owner, repo, number, map[string]string{"state": "closed"})
 	if err != nil {
 		log.Fatal(err)
 	}
 }
 
 func open(owner string, repo string, number string) {
-	_, err := github.EditIssue(owner, repo, number, map[string]string{"state": "open"})
+	_, err := EditIssue(owner, repo, number, map[string]string{"state": "open"})
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -125,7 +127,7 @@ func main() {
 	args := os.Args[2:]
 
 	if cmd == "search" {
-		if len(args) != 1 {
+		if len(args) < 1 {
 			usageDie()
 		}
 		search(args)
