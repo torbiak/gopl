@@ -1,3 +1,4 @@
+// ex4.13 searches OMDB by title and downloads a movie poster.
 package main
 
 import (
