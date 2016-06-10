@@ -1,3 +1,4 @@
+// ex5.2 counts the frequency of different tags in an html document on stdin.
 package main
 
 import (
