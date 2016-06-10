@@ -1,11 +1,12 @@
-// ex3.10 inserts commas into integer strings given as command-line arguments,
-// without using recursion.
+// ex3.11 inserts commas into floating point strings with an optional sign
+// given as command-line arguments.
 package main
 
 import (
 	"fmt"
 	"bytes"
 	"os"
+	"strings"
 )
 
 func main() {
@@ -14,19 +15,31 @@ func main() {
 	}
 }
 
-// comma inserts commas in a non-negative decimal integer string.
 func comma(s string) string {
-	b := &bytes.Buffer{}
-	pre := len(s) % 3
-	// Write the first group of up to 3 digits.
-	if pre == 0 {
-		pre = 3
+	b := bytes.Buffer{}
+	mantissaStart := 0
+	if s[0] == '+' || s[0] == '-' {
+		b.WriteByte(s[0])
+		mantissaStart = 1
 	}
-	b.WriteString(s[:pre])
-	// Deal with the rest.
-	for i := pre; i < len(s); i += 3 {
-		b.WriteByte(',')
-		b.WriteString(s[i:i+3])
+	mantissaEnd := strings.Index(s, ".")
+	if mantissaEnd == -1 {
+		mantissaEnd = len(s)
 	}
+	mantissa := s[mantissaStart:mantissaEnd]
+	pre := len(mantissa) % 3
+	if pre > 0 {
+		b.Write([]byte(mantissa[:pre]))
+		if len(mantissa) > pre {
+			b.WriteString(",")
+		}
+	}
+	for i, c := range mantissa[pre:] {
+		if i%3 == 0 && i != 0 {
+			b.WriteString(",")
+		}
+		b.WriteRune(c)
+	}
+	b.WriteString(s[mantissaEnd:])
 	return b.String()
 }
