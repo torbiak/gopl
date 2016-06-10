@@ -1,7 +1,7 @@
-package main
+// ex4.6 reverses a utf8 string.
+package reverse
 
 import (
-	"fmt"
 	"unicode/utf8"
 )
 
@@ -23,9 +23,4 @@ func revUTF8(b []byte) []byte {
 	}
 	rev(b)
 	return b
-}
-
-func main() {
-	b := []byte("Räksmörgås")
-	fmt.Println(string(revUTF8(b)))
 }
