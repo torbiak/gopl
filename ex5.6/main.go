@@ -40,7 +40,7 @@ func main() {
 	fmt.Println("</svg>")
 }
 
-func corner(i, j int) (sx float64, sy float64) {
+func corner(i, j int) (float64, float64) {
 	// Find point (x,y) at corner of cell (i,j).
 	x := xyrange * (float64(i)/cells - 0.5)
 	y := xyrange * (float64(j)/cells - 0.5)
@@ -49,9 +49,9 @@ func corner(i, j int) (sx float64, sy float64) {
 	z := f(x, y)
 
 	// Project (x,y,z) isometrically onto 2-D SVG canvas (sx,sy).
-	sx = width/2 + (x-y)*cos30*xyscale
-	sy = height/2 + (x+y)*sin30*xyscale - z*zscale
-	return
+	sx := width/2 + (x-y)*cos30*xyscale
+	sy := height/2 + (x+y)*sin30*xyscale - z*zscale
+	return sx, sy
 }
 
 func f(x, y float64) float64 {
