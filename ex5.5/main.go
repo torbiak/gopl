@@ -1,3 +1,4 @@
+// ex5.5 counts the number of words and images at a url.
 package main
 
 import (
@@ -5,7 +6,8 @@ import (
 	"log"
 	"os"
 	"net/http"
-	"unicode"
+	"bufio"
+	"strings"
 
 	"golang.org/x/net/html"
 )
@@ -49,20 +51,13 @@ func countWordsAndImages(n *html.Node) (words, images int) {
 }
 
 func wordCount(s string) int {
-	// Alternatively, strings.FieldsFunc could be used, but a slice would be allocated for each word.
-	count := 0
-	prev_ws := true
-	for _, r := range s {
-		ws := unicode.IsSpace(r)
-		if !prev_ws && ws {
-			count++
-		}
-		prev_ws = ws
+	n := 0
+	scan := bufio.NewScanner(strings.NewReader(s))
+	scan.Split(bufio.ScanWords)
+	for scan.Scan() {
+		n++
 	}
-	if !prev_ws {
-		count++
-	}
-	return count
+	return n
 }
 
 func main() {
