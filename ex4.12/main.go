@@ -1,3 +1,4 @@
+// ex4.12 gets, indexes, and searches xkcd comic metadata.
 package main
 
 import (
