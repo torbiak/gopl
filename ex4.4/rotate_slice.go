@@ -1,4 +1,5 @@
-package main
+// ex4.4 rotates a slice of ints by one position to the left.
+package rotate
 
 import (
 	"fmt"
