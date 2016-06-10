@@ -1,9 +1,3 @@
-// Copyright © 2016 Alan A. A. Donovan & Brian W. Kernighan.
-// License: https://creativecommons.org/licenses/by-nc-sa/4.0/
-
-// See page 58.
-//!+
-
 // Surface computes an SVG rendering of a 3-D surface function.
 package main
 
@@ -40,7 +34,7 @@ func main() {
 	fmt.Println("</svg>")
 }
 
-func corner(i, j int) (float64, float64) {
+func corner(i, j int) (sx float64, sy float64) {
 	// Find point (x,y) at corner of cell (i,j).
 	x := xyrange * (float64(i)/cells - 0.5)
 	y := xyrange * (float64(j)/cells - 0.5)
@@ -49,14 +43,12 @@ func corner(i, j int) (float64, float64) {
 	z := f(x, y)
 
 	// Project (x,y,z) isometrically onto 2-D SVG canvas (sx,sy).
-	sx := width/2 + (x-y)*cos30*xyscale
-	sy := height/2 + (x+y)*sin30*xyscale - z*zscale
-	return sx, sy
+	sx = width/2 + (x-y)*cos30*xyscale
+	sy = height/2 + (x+y)*sin30*xyscale - z*zscale
+	return
 }
 
 func f(x, y float64) float64 {
 	r := math.Hypot(x, y) // distance from (0,0)
 	return math.Sin(r) / r
 }
-
-//!-
