@@ -1,4 +1,5 @@
-// Findlinks1 prints the links in an HTML document read from standard input.
+// ex5.4 prints the links in an HTML document read from standard input,
+// including those for images, scripts, and style sheets.
 package main
 
 import (
