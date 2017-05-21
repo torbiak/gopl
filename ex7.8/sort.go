@@ -7,9 +7,8 @@ import (
 
 type Person struct {
 	Name string
-	Age int
+	Age  int
 }
-const nPersonSortableFields = 2
 
 func (p Person) String() string {
 	return fmt.Sprintf("%s: %d", p.Name, p.Age)
@@ -18,7 +17,7 @@ func (p Person) String() string {
 type columnCmp func(a, b *Person) comparison
 
 type ByColumns struct {
-	p []Person
+	p       []Person
 	columns []columnCmp
 }
 
@@ -56,7 +55,7 @@ func (c *ByColumns) LessAge(a, b *Person) comparison {
 	}
 }
 
-func (c *ByColumns) Len() int { return len(c.p) }
+func (c *ByColumns) Len() int      { return len(c.p) }
 func (c *ByColumns) Swap(i, j int) { c.p[i], c.p[j] = c.p[j], c.p[i] }
 
 func (c *ByColumns) Less(i, j int) bool {
@@ -76,18 +75,9 @@ func (c *ByColumns) Less(i, j int) bool {
 
 func (c *ByColumns) Select(cmp columnCmp) {
 	c.columns = append(c.columns, cmp)
-	// Reverse the slice, since the most recently selected columns is the most
-	// significant key.
-	s := len(c.columns)
-	for i := 0; i < s/2; i++ {
-		c.columns[i], c.columns[s-i-1] = c.columns[s-i-1], c.columns[i]
+	if len(c.columns) > 1 {
+		copy(c.columns[1:], c.columns[0:])
+		c.columns[0] = cmp
 	}
-	c.columns = c.columns[:min(len(c.columns), nPersonSortableFields)]
 }
 
-func min(a, b int) int {
-	if a < b {
-		return a
-	}
-	return b
-}
