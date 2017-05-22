@@ -27,7 +27,7 @@ func TestByColumns_Age(t *testing.T) {
 		{"Alice", 20},
 		{"Alice", 12},
 	}
-	c := &ByColumns{people, nil}
+	c := &ByColumns{people, nil, 2}
 	c.Select(c.LessAge)
 	sort.Sort(c)
 	Cmp(people, []Person{
@@ -40,7 +40,7 @@ func TestByColumns_Name(t *testing.T) {
 		{"Bob", 20},
 		{"Alice", 20},
 	}
-	c := &ByColumns{people, nil}
+	c := &ByColumns{people, nil, 2}
 	c.Select(c.LessName)
 	sort.Sort(c)
 	Cmp(people, []Person{
@@ -56,7 +56,7 @@ func TestByColumns_NameAge(t *testing.T) {
 		{"Bob", 20},
 		{"Alice", 12},
 	}
-	c := &ByColumns{people, nil}
+	c := &ByColumns{people, nil, 2}
 	c.Select(c.LessAge)
 	c.Select(c.LessName)
 	sort.Sort(c)
@@ -75,7 +75,7 @@ func TestByColumns_AgeName(t *testing.T) {
 		{"Bob", 20},
 		{"Alice", 12},
 	}
-	c := &ByColumns{people, nil}
+	c := &ByColumns{people, nil, 2}
 	c.Select(c.LessName)
 	c.Select(c.LessAge)
 	sort.Sort(c)
@@ -85,4 +85,33 @@ func TestByColumns_AgeName(t *testing.T) {
 		{"Alice", 20},
 		{"Bob", 20},
 	}, t)
+}
+
+func TestByColumns_SumOfAgeDigitsNameAge(t *testing.T) {
+	people := []Person{
+		{"Aaron", 9},
+		{"Aaron", 81},
+		{"Alice", 20},
+		{"Bob", 12},
+		{"Bob", 20},
+		{"Alice", 12},
+	}
+	maxComparisons := 3
+	c := &ByColumns{people, nil, maxComparisons}
+	c.Select(c.LessAge)
+	c.Select(c.LessAge)
+	c.Select(c.LessName)
+	c.Select(c.LessSumOfAgeDigits)
+	sort.Sort(c)
+	Cmp(people, []Person{
+		{"Alice", 20},
+		{"Bob", 20},
+		{"Alice", 12},
+		{"Bob", 12},
+		{"Aaron", 9},
+		{"Aaron", 81},
+	}, t)
+	if len(c.columns) > maxComparisons {
+		t.Errorf("Want %d comparisons, got %d", maxComparisons, len(c.columns))
+	}
 }

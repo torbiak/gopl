@@ -9,7 +9,6 @@ type Person struct {
 	Name string
 	Age int
 }
-const nPersonSortableFields = 2
 
 func (p Person) String() string {
 	return fmt.Sprintf("%s: %d", p.Name, p.Age)
@@ -20,10 +19,11 @@ type columnCmp func(a, b *Person) comparison
 type ByColumns struct {
 	p []Person
 	columns []columnCmp
+	maxColumns int
 }
 
-func NewByColumns(p []Person) *ByColumns {
-	return &ByColumns{p, nil}
+func NewByColumns(p []Person, maxColumns int) *ByColumns {
+	return &ByColumns{p, nil, maxColumns}
 }
 
 type comparison int
@@ -44,6 +44,28 @@ func (c *ByColumns) LessName(a, b *Person) comparison {
 		return gt
 	}
 }
+
+func (c *ByColumns) LessSumOfAgeDigits(a, b *Person) comparison {
+	aSum := sumOfDigits(a.Age)
+	bSum := sumOfDigits(b.Age)
+	switch {
+	case aSum == bSum:
+		return eq
+	case aSum < bSum:
+		return lt
+	default:
+		return gt
+	}
+}
+
+func sumOfDigits(n int) int {
+	sum := 0
+	for ; n > 0; n /= 10 {
+		sum += n % 10
+	}
+	return sum
+}
+
 
 func (c *ByColumns) LessAge(a, b *Person) comparison {
 	switch {
@@ -75,19 +97,11 @@ func (c *ByColumns) Less(i, j int) bool {
 }
 
 func (c *ByColumns) Select(cmp columnCmp) {
-	c.columns = append(c.columns, cmp)
-	// Reverse the slice, since the most recently selected columns is the most
-	// significant key.
-	s := len(c.columns)
-	for i := 0; i < s/2; i++ {
-		c.columns[i], c.columns[s-i-1] = c.columns[s-i-1], c.columns[i]
-	}
-	c.columns = c.columns[:min(len(c.columns), nPersonSortableFields)]
-}
+	// Prepend the new comparison, as it's the most significant.
+	c.columns = append([]columnCmp{cmp}, c.columns...)
 
-func min(a, b int) int {
-	if a < b {
-		return a
+	// Don't let the slice of comparisons grow without bound.
+	if len(c.columns) > c.maxColumns {
+		c.columns = c.columns[:c.maxColumns]
 	}
-	return b
 }
