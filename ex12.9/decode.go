@@ -1,4 +1,4 @@
-// ex12.9 is token-based API for decosing s-expressions.
+// ex12.9 is a token-based API for decoding s-expressions.
 package decode
 
 import (
