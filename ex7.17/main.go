@@ -176,7 +176,7 @@ func isSelected(stack []xml.StartElement, sels []selector) bool {
 	if len(stack) < len(sels) {
 		return false
 	}
-	start := len(sels) - len(stack)
+	start := len(stack) - len(sels)
 	stack = stack[start:]
 	for i := 0; i < len(sels); i++ {
 		sel := sels[i]
