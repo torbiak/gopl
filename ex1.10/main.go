@@ -36,6 +36,11 @@ func fetch(uri string, ch chan<- string) {
 	}
 	nbytes, err := io.Copy(f, resp.Body)
 	resp.Body.Close() // don't leak resources
+
+	if closeErr := f.Close(); err == nil { // example from chapter 5.8, gopl.io/ch5/fetch
+		err = closeErr
+	}
+
 	if err != nil {
 		ch <- fmt.Sprintf("while reading %s: %v", uri, err)
 		return
@@ -43,4 +48,3 @@ func fetch(uri string, ch chan<- string) {
 	secs := time.Since(start).Seconds()
 	ch <- fmt.Sprintf("%.2fs  %7d  %s", secs, nbytes, uri)
 }
-
