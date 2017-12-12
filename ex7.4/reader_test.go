@@ -1,8 +1,8 @@
 package reader
 
 import (
-	"testing"
 	"bytes"
+	"testing"
 
 	"golang.org/x/net/html"
 )

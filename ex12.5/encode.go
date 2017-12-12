@@ -16,7 +16,6 @@ func Marshal(v interface{}) ([]byte, error) {
 	return buf.Bytes(), nil
 }
 
-
 // encode writes to buf a json representation of v.
 func encode(buf *bytes.Buffer, v reflect.Value, indent int) error {
 	switch v.Kind() {

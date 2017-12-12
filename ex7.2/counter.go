@@ -6,7 +6,7 @@ import (
 )
 
 type byteCounter struct {
-	w io.Writer
+	w       io.Writer
 	written int64
 }
 

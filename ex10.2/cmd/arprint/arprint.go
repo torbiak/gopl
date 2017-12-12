@@ -13,14 +13,14 @@
 package main
 
 import (
-	"os"
 	"fmt"
 	"io"
 	"log"
+	"os"
 
 	arprint "github.com/torbiak/gopl/ex10.2"
-	_ "github.com/torbiak/gopl/ex10.2/zip"
 	_ "github.com/torbiak/gopl/ex10.2/tar"
+	_ "github.com/torbiak/gopl/ex10.2/zip"
 )
 
 func printArchive(filename string) error {

@@ -112,8 +112,7 @@ func equalish(x, y reflect.Value, seen map[comparison]bool) bool {
 	panic("unreachable")
 }
 
-
-// Equalish reports whether x and y are deeply equal, with numeric values 
+// Equalish reports whether x and y are deeply equal, with numeric values
 // differing by less than one part in a billion.
 //
 // Map keys are always compared with ==, not deeply.

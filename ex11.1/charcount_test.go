@@ -1,34 +1,34 @@
 package main
 
 import (
-	"testing"
 	"reflect"
 	"strings"
+	"testing"
 )
 
 func TestCharCount(t *testing.T) {
 	tests := []struct {
-		input string
-		runes map[rune]int
-		props map[string]int
-		sizes map[int]int
+		input   string
+		runes   map[rune]int
+		props   map[string]int
+		sizes   map[int]int
 		invalid int
 	}{
 		{
 			input: "Hi, 世.",
 			runes: map[rune]int{'H': 1, 'i': 1, ',': 1, ' ': 1, '世': 1, '.': 1},
 			props: map[string]int{
-				"Ideographic": 1,
-				"Pattern_Syntax": 2,
-				"Pattern_White_Space": 1,
-				"STerm": 1,
-				"Soft_Dotted": 1,
-				"Sentence_Terminal": 1,
+				"Ideographic":          1,
+				"Pattern_Syntax":       2,
+				"Pattern_White_Space":  1,
+				"STerm":                1,
+				"Sentence_Terminal":    1,
+				"Soft_Dotted":          1,
 				"Terminal_Punctuation": 2,
-				"Unified_Ideograph": 1,
-				"White_Space": 1,
+				"Unified_Ideograph":    1,
+				"White_Space":          1,
 			},
-			sizes: map[int]int{1: 5, 3: 1},
+			sizes:   map[int]int{1: 5, 3: 1},
 			invalid: 0,
 		},
 	}

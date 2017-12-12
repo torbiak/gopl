@@ -48,7 +48,7 @@ func lissajous(out io.Writer) {
 	palette = append(palette, color.RGBA{0, 0, 0, 255})
 	for i := 0; i < nframes; i++ {
 		scale := float64(i) / float64(nframes)
-		c := color.RGBA{uint8(55 + 200 * scale), uint8(55 + 200 * scale), uint8(55 + 200 * scale), 255}
+		c := color.RGBA{uint8(55 + 200*scale), uint8(55 + 200*scale), uint8(55 + 200*scale), 255}
 		palette = append(palette, c)
 	}
 	freq := rand.Float64() * 3.0 // relative frequency of y oscillator
@@ -60,7 +60,7 @@ func lissajous(out io.Writer) {
 		for t := 0.0; t < cycles*2*math.Pi; t += res {
 			x := math.Sin(t)
 			y := math.Sin(t*freq + phase)
-			img.SetColorIndex(size+int(x*size+0.5), size+int(y*size+0.5), uint8((i % (len(palette)-1)) + 1))
+			img.SetColorIndex(size+int(x*size+0.5), size+int(y*size+0.5), uint8((i%(len(palette)-1))+1))
 		}
 		phase += 0.1
 		anim.Delay = append(anim.Delay, delay)

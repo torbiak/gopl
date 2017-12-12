@@ -1,13 +1,13 @@
 package word
 
 import (
-	"time"
-	"testing"
-	"strings"
+	"bytes"
 	"fmt"
 	"math/rand"
+	"strings"
+	"testing"
+	"time"
 	"unicode"
-	"bytes"
 )
 
 func TestRandomPalindromes(t *testing.T) {
@@ -34,7 +34,6 @@ func TestRandomNonPalindromes(t *testing.T) {
 		}
 	}
 }
-
 
 // randomPalindrome returns a palindrome whose length and contents are derived
 // from the pseudo-random number generator rng.
@@ -84,7 +83,7 @@ var grammar = map[string][]weighted{
 var letters []rune
 
 type weighted struct {
-	s string
+	s      string
 	weight float64
 }
 

@@ -30,7 +30,7 @@ type request struct {
 	response chan<- result // the client wants a single result
 }
 
-type Memo struct{
+type Memo struct {
 	requests, cancels chan request
 }
 
@@ -65,7 +65,7 @@ func (memo *Memo) server(f Func) {
 	cache := make(map[string]*entry)
 Loop:
 	for {
-Cancel:
+	Cancel:
 		// Process all cancellations before requests.
 		// After Get has returned a cancellation for some key, any subsequent
 		// requests for that key should return the result of a new call to

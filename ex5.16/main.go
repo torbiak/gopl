@@ -2,8 +2,8 @@
 package main
 
 import (
-	"fmt"
 	"bytes"
+	"fmt"
 )
 
 func join(sep string, strs ...string) string {

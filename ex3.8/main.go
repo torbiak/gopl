@@ -6,9 +6,9 @@ import (
 	"image/color"
 	"image/png"
 	"math"
+	"math/big"
 	"math/cmplx"
 	"os"
-	"math/big"
 )
 
 func main() {
@@ -43,7 +43,7 @@ func mandelbrot(z complex128) color.Color {
 			default:
 				// logarithmic blue gradient to show small differences on the
 				// periphery of the fractal.
-				logScale := math.Log(float64(n))/math.Log(float64(iterations))
+				logScale := math.Log(float64(n)) / math.Log(float64(iterations))
 				return color.RGBA{0, 0, 255 - uint8(logScale*255), 255}
 			}
 		}
@@ -64,7 +64,7 @@ func mandelbrot64(z complex128) color.Color {
 			default:
 				// logarithmic blue gradient to show small differences on the
 				// periphery of the fractal.
-				logScale := math.Log(float64(n))/math.Log(float64(iterations))
+				logScale := math.Log(float64(n)) / math.Log(float64(iterations))
 				return color.RGBA{0, 0, 255 - uint8(logScale*255), 255}
 			}
 		}
@@ -93,14 +93,13 @@ func mandelbrotBigFloat(z complex128) color.Color {
 			default:
 				// logarithmic blue gradient to show small differences on the
 				// periphery of the fractal.
-				logScale := math.Log(float64(i))/math.Log(float64(iterations))
+				logScale := math.Log(float64(i)) / math.Log(float64(iterations))
 				return color.RGBA{0, 0, 255 - uint8(logScale*255), 255}
 			}
 		}
 	}
 	return color.Black
 }
-
 
 func mandelbrotRat(z complex128) color.Color {
 	// High-resolution images take an extremely long time to render with
@@ -127,7 +126,7 @@ func mandelbrotRat(z complex128) color.Color {
 			default:
 				// logarithmic blue gradient to show small differences on the
 				// periphery of the fractal.
-				logScale := math.Log(float64(i))/math.Log(float64(iterations))
+				logScale := math.Log(float64(i)) / math.Log(float64(iterations))
 				return color.RGBA{0, 0, 255 - uint8(logScale*255), 255}
 			}
 		}

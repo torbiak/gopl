@@ -1,11 +1,11 @@
 package json
 
 import (
+	"bytes"
+	"encoding/json"
+	"fmt"
 	"reflect"
 	"testing"
-	"fmt"
-	"encoding/json"
-	"bytes"
 )
 
 // Test verifies that encoding and decoding a complex data value
@@ -69,7 +69,7 @@ func Test(t *testing.T) {
 
 func TestBool(t *testing.T) {
 	tests := []struct {
-		v bool
+		v    bool
 		want string
 	}{
 		{true, "true"},
@@ -88,7 +88,7 @@ func TestBool(t *testing.T) {
 
 func TestFloat32(t *testing.T) {
 	tests := []struct {
-		v float32
+		v    float32
 		want string
 	}{
 		{3.2e9, "3.2e+09"},
@@ -108,7 +108,7 @@ func TestFloat32(t *testing.T) {
 
 func TestFloat64(t *testing.T) {
 	tests := []struct {
-		v float64
+		v    float64
 		want string
 	}{
 		{3.2e9, "3.2e+09"},

@@ -5,9 +5,9 @@ import (
 )
 
 func TestPack(t *testing.T) {
-	s := struct{
+	s := struct {
 		Name string `http:"n"`
-		Age int `http:"a"`
+		Age  int    `http:"a"`
 	}{"Arugula", 35}
 	u, err := Pack(&s)
 	if err != nil {

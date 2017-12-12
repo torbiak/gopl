@@ -2,14 +2,14 @@
 package main
 
 import (
-	"strings"
+	"flag"
 	"fmt"
 	"image"
+	"image/gif"
 	"image/jpeg"
 	"image/png"
-	"image/gif"
 	"os"
-	"flag"
+	"strings"
 )
 
 func main() {
@@ -21,7 +21,7 @@ func main() {
 		os.Exit(1)
 	}
 	info, _ := os.Stdout.Stat()
-	if info.Mode() & os.ModeCharDevice != 0 {
+	if info.Mode()&os.ModeCharDevice != 0 {
 		fmt.Fprintln(os.Stderr, "Refusing to write to character device. Redirect output to a pipe or regular file.")
 		os.Exit(1)
 	}

@@ -3,10 +3,10 @@ package main
 
 import (
 	"fmt"
-	"os"
-	"log"
-	"strings"
 	"io"
+	"log"
+	"os"
+	"strings"
 
 	"golang.org/x/net/html"
 )
@@ -14,7 +14,7 @@ import (
 var depth int
 
 type PrettyPrinter struct {
-	w io.Writer
+	w   io.Writer
 	err error
 }
 

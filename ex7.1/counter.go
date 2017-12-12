@@ -3,8 +3,8 @@ package counter
 
 import (
 	"fmt"
-	"unicode/utf8"
 	"unicode"
+	"unicode/utf8"
 )
 
 type LineCounter struct {
@@ -28,9 +28,8 @@ func (c *LineCounter) String() string {
 	return fmt.Sprintf("%d", c.lines)
 }
 
-
 type WordCounter struct {
-	words int
+	words  int
 	inWord bool
 }
 
@@ -61,7 +60,6 @@ func leadingNonSpaces(p []byte) int {
 	}
 	return count
 }
-
 
 // A !IsSpace() -> IsSpace() transition is counted as a word.
 //
@@ -98,4 +96,3 @@ func (c *WordCounter) N() int {
 func (c *WordCounter) String() string {
 	return fmt.Sprintf("%d", c.words)
 }
-

@@ -9,7 +9,7 @@ import (
 )
 
 func main() {
-	addr, err := net.ResolveTCPAddr("tcp",  "localhost:8000")
+	addr, err := net.ResolveTCPAddr("tcp", "localhost:8000")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -27,7 +27,6 @@ func main() {
 	conn.CloseWrite()
 	<-done // wait for background goroutine to finish
 }
-
 
 func mustCopy(dst io.Writer, src io.Reader) {
 	if _, err := io.Copy(dst, src); err != nil {

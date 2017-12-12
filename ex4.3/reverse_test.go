@@ -1,12 +1,12 @@
 package reverse
 
 import (
-	"testing"
 	"reflect"
+	"testing"
 )
 
 func TestReverse(t *testing.T) {
-	tests := []struct{
+	tests := []struct {
 		a, want [5]int
 	}{
 		{[5]int{1, 2, 3, 4, 5}, [5]int{5, 4, 3, 2, 1}},

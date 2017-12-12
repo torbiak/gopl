@@ -1,9 +1,9 @@
 package main
 
 import (
+	"bytes"
 	"fmt"
 	"sort"
-	"bytes"
 )
 
 type MapIntSet struct {

@@ -11,8 +11,8 @@ import (
 	"fmt"
 	"net/http"
 	"net/url"
-	"strings"
 	"os"
+	"strings"
 )
 
 // SearchIssues queries the GitHub issue tracker.

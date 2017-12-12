@@ -1,10 +1,10 @@
 package main
 
 import (
-	"testing"
-	"net/url"
 	"golang.org/x/net/html"
+	"net/url"
 	"strings"
+	"testing"
 )
 
 func TestRewriteLocalLinks(t *testing.T) {

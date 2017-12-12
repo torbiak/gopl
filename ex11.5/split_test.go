@@ -2,14 +2,14 @@
 package main
 
 import (
-	"testing"
 	"strings"
+	"testing"
 )
 
 func TestSplit(t *testing.T) {
 	tests := []struct {
 		s, sep string
-		want int
+		want   int
 	}{
 		{"a:b:c", ":", 3},
 	}

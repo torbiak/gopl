@@ -2,8 +2,8 @@
 package popcount
 
 import (
-	"testing"
 	"sync"
+	"testing"
 )
 
 func PopCountShiftMask(x uint64) int {

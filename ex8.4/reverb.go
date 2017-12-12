@@ -8,8 +8,8 @@ import (
 	"log"
 	"net"
 	"strings"
-	"time"
 	"sync"
+	"time"
 )
 
 func echo(c net.Conn, shout string, delay time.Duration, wg sync.WaitGroup) {

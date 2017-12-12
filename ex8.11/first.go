@@ -2,11 +2,11 @@
 package main
 
 import (
-	"strings"
-	"net/http"
-	"fmt"
 	"flag"
+	"fmt"
 	"log"
+	"net/http"
+	"strings"
 	"sync"
 )
 

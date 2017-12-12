@@ -47,7 +47,6 @@ func cyclic(x reflect.Value, seen map[ptr]bool) bool {
 	panic("unreachable")
 }
 
-
 func Cyclic(x interface{}) bool {
 	seen := make(map[ptr]bool)
 	return cyclic(reflect.ValueOf(x), seen)

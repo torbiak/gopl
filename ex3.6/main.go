@@ -63,17 +63,16 @@ func mandelbrot(z complex128) color.Color {
 			switch {
 			case n > 50: // dark red
 				return color.RGBA{100, 0, 0, 255}
-			default: 
+			default:
 				// logarithmic blue gradient to show small differences on the
 				// periphery of the fractal.
-				logScale := math.Log(float64(n))/math.Log(float64(iterations))
+				logScale := math.Log(float64(n)) / math.Log(float64(iterations))
 				return color.RGBA{0, 0, 255 - uint8(logScale*255), 255}
 			}
 		}
 	}
 	return color.Black
 }
-
 
 // Some other interesting functions:
 

@@ -3,13 +3,13 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
+	"log"
 	"os"
 	"regexp"
 	"strconv"
 	"strings"
-	"log"
-	"bufio"
 )
 
 type Measurement interface {
@@ -41,7 +41,6 @@ func (d Distance) Feet() float64 {
 }
 
 type Temperature float64
-
 
 func FromCelcius(c float64) Temperature {
 	return Temperature(c)

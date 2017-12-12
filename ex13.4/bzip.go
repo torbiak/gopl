@@ -2,12 +2,12 @@
 package bzip
 
 import (
-	"os/exec"
 	"io"
+	"os/exec"
 )
 
 type Writer struct {
-	cmd exec.Cmd
+	cmd   exec.Cmd
 	stdin io.WriteCloser
 }
 

@@ -5,10 +5,10 @@
 package main
 
 import (
-	"sort"
-	"net/http"
 	"html/template"
 	"log"
+	"net/http"
+	"sort"
 
 	"github.com/torbiak/gopl/ex7.8"
 )
@@ -41,7 +41,7 @@ var html = template.Must(template.New("people").Parse(`
 
 func main() {
 	c := column.NewByColumns(people, 2)
-	http.HandleFunc("/", func (w http.ResponseWriter, r *http.Request) {
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		switch r.FormValue("sort") {
 		case "age":
 			c.Select(c.LessAge)

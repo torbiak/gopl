@@ -2,6 +2,7 @@
 package main
 
 import (
+	"fmt"
 	"image"
 	"image/color"
 	"image/png"
@@ -9,10 +10,9 @@ import (
 	"math"
 	"math/cmplx"
 	"net/http"
-	"sync"
 	"runtime"
+	"sync"
 	"time"
-	"fmt"
 )
 
 const (

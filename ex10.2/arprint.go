@@ -2,16 +2,16 @@
 package arprint
 
 import (
-	"io"
 	"bufio"
 	"fmt"
+	"io"
 	"os"
 )
 
 type format struct {
 	name, magic string
 	magicOffset int
-	reader NewReader
+	reader      NewReader
 }
 
 type NewReader func(*os.File) (io.Reader, error)

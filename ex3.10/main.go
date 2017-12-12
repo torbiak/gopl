@@ -3,8 +3,8 @@
 package main
 
 import (
-	"fmt"
 	"bytes"
+	"fmt"
 	"os"
 )
 
@@ -26,7 +26,7 @@ func comma(s string) string {
 	// Deal with the rest.
 	for i := pre; i < len(s); i += 3 {
 		b.WriteByte(',')
-		b.WriteString(s[i:i+3])
+		b.WriteString(s[i : i+3])
 	}
 	return b.String()
 }

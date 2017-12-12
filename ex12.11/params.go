@@ -4,10 +4,10 @@ package params
 import (
 	"fmt"
 	"net/http"
+	"net/url"
 	"reflect"
 	"strconv"
 	"strings"
-	"net/url"
 )
 
 func Pack(ptr interface{}) (url.URL, error) {
@@ -71,7 +71,6 @@ func Unpack(req *http.Request, ptr interface{}) error {
 	return nil
 }
 
-
 func populate(v reflect.Value, value string) error {
 	switch v.Kind() {
 	case reflect.String:
@@ -96,4 +95,3 @@ func populate(v reflect.Value, value string) error {
 	}
 	return nil
 }
-

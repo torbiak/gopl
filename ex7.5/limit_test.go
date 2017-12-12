@@ -1,9 +1,9 @@
 package reader
 
 import (
-	"testing"
 	"bytes"
 	"strings"
+	"testing"
 )
 
 func TestLimitReader(t *testing.T) {

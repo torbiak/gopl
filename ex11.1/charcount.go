@@ -2,20 +2,20 @@
 package main
 
 import (
-	"log"
 	"bufio"
 	"fmt"
 	"io"
+	"log"
 	"os"
 	"unicode"
 )
 
 func charCount(r io.Reader) (
 	runes map[rune]int, props map[string]int, sizes map[int]int, invalid int) {
-	runes = make(map[rune]int) // char frequency
+	runes = make(map[rune]int)   // char frequency
 	props = make(map[string]int) // unicode.Properties frequency
-	sizes = make(map[int]int) // rune length frequency
-	invalid = 0              // invalid char frequency
+	sizes = make(map[int]int)    // rune length frequency
+	invalid = 0                  // invalid char frequency
 
 	in := bufio.NewReader(r)
 	for {

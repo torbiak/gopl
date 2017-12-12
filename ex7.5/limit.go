@@ -6,7 +6,7 @@ import (
 )
 
 type limitReader struct {
-	r io.Reader
+	r        io.Reader
 	n, limit int
 }
 

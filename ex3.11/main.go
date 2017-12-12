@@ -3,8 +3,8 @@
 package main
 
 import (
-	"fmt"
 	"bytes"
+	"fmt"
 	"os"
 	"strings"
 )

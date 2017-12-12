@@ -6,7 +6,6 @@ import (
 	"fmt"
 )
 
-
 // An IntSet is a set of small non-negative integers.
 // Its zero value represents the empty set.
 type IntSet struct {
@@ -78,14 +77,11 @@ func (s *IntSet) SymmetricDifference(t *IntSet) {
 	}
 }
 
-
-
-
 func popcount(x uint64) int {
 	count := 0
 	for x != 0 {
 		count++
-		x &= x-1
+		x &= x - 1
 	}
 	return count
 }
@@ -120,7 +116,6 @@ func (s *IntSet) Copy() *IntSet {
 	return new
 }
 
-
 // String returns the set as a string of the form "{1 2 3}".
 func (s *IntSet) String() string {
 	var buf bytes.Buffer
@@ -147,7 +142,7 @@ func (s *IntSet) Elems() []int {
 	e := make([]int, 0)
 	for i, word := range s.words {
 		for j := 0; j < 64; j++ {
-			if word & (1 << uint(j)) != 0 {
+			if word&(1<<uint(j)) != 0 {
 				e = append(e, i*64+j)
 			}
 		}

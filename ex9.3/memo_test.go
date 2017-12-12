@@ -1,9 +1,9 @@
 package memo
 
 import (
-	"testing"
 	"fmt"
 	"sync"
+	"testing"
 )
 
 func TestCancel(t *testing.T) {

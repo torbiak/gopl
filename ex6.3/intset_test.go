@@ -75,7 +75,6 @@ func TestIntersectWith(t *testing.T) {
 	}
 }
 
-
 func TestDifferenceWith(t *testing.T) {
 	s := &IntSet{}
 	s.AddAll(0, 2, 4)

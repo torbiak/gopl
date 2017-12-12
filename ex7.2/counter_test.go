@@ -1,8 +1,8 @@
 package counter
 
 import (
-	"testing"
 	"bytes"
+	"testing"
 )
 
 func TestCountingWriter(t *testing.T) {

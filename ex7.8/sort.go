@@ -7,7 +7,7 @@ import (
 
 type Person struct {
 	Name string
-	Age int
+	Age  int
 }
 
 func (p Person) String() string {
@@ -17,8 +17,8 @@ func (p Person) String() string {
 type columnCmp func(a, b *Person) comparison
 
 type ByColumns struct {
-	p []Person
-	columns []columnCmp
+	p          []Person
+	columns    []columnCmp
 	maxColumns int
 }
 
@@ -66,7 +66,6 @@ func sumOfDigits(n int) int {
 	return sum
 }
 
-
 func (c *ByColumns) LessAge(a, b *Person) comparison {
 	switch {
 	case a.Age == b.Age:
@@ -78,7 +77,7 @@ func (c *ByColumns) LessAge(a, b *Person) comparison {
 	}
 }
 
-func (c *ByColumns) Len() int { return len(c.p) }
+func (c *ByColumns) Len() int      { return len(c.p) }
 func (c *ByColumns) Swap(i, j int) { c.p[i], c.p[j] = c.p[j], c.p[i] }
 
 func (c *ByColumns) Less(i, j int) bool {

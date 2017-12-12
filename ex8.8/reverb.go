@@ -4,12 +4,12 @@ package main
 import (
 	"bufio"
 	"fmt"
+	"io"
 	"log"
 	"net"
 	"strings"
-	"time"
-	"io"
 	"sync"
+	"time"
 )
 
 func echo(c net.Conn, shout string, delay time.Duration, wg *sync.WaitGroup) {
@@ -42,8 +42,8 @@ func handleConn(c net.Conn) {
 	}()
 	lines := make(chan string)
 	go scan(c, lines)
-	timeout := 2*time.Second
-	timer := time.NewTimer(2*time.Second)
+	timeout := 2 * time.Second
+	timer := time.NewTimer(2 * time.Second)
 	for {
 		select {
 		case line := <-lines:

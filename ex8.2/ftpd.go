@@ -87,6 +87,7 @@ func hostPortFromFTP(address string) (string, error) {
 }
 
 type logPairs map[string]interface{}
+
 func (c *conn) log(pairs logPairs) {
 	b := &bytes.Buffer{}
 	fmt.Fprintf(b, "addr=%s", c.rw.RemoteAddr().String())

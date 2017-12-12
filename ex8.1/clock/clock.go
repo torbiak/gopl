@@ -2,12 +2,12 @@
 package main
 
 import (
+	"flag"
+	"fmt"
 	"io"
 	"log"
 	"net"
 	"time"
-	"flag"
-	"fmt"
 )
 
 var port = flag.Int("port", 8080, "listen port")

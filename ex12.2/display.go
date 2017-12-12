@@ -2,18 +2,16 @@
 package display
 
 import (
+	"bytes"
 	"fmt"
 	"reflect"
 	"strconv"
-	"bytes"
 )
-
 
 func Display(name string, x interface{}) {
 	fmt.Printf("Display %s (%T):\n", name, x)
 	display(name, reflect.ValueOf(x), 0)
 }
-
 
 // formatAtom formats a value without inspecting its internal structure.
 // It is a copy of the the function in gopl.io/ch11/format.

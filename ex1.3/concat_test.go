@@ -4,8 +4,8 @@
 package concat_test
 
 import (
-	"testing"
 	"strings"
+	"testing"
 )
 
 var args = []string{"hi", "there", "buddy", "boy", "5", "6", "7", "8", "9"}

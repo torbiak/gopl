@@ -15,15 +15,15 @@ import (
 
 // Packages not needed by version in book.
 import (
+	"fmt"
 	"log"
 	"net/http"
-	"time"
 	"strconv"
-	"fmt"
+	"time"
 )
 
 func main() {
-	var cycles = 5     // number of complete x oscillator revolutions
+	var cycles = 5 // number of complete x oscillator revolutions
 
 	// The sequence of images is deterministic unless we seed
 	// the pseudo-random number generator using the current time.
@@ -61,7 +61,7 @@ func lissajous(cycles int, out io.Writer) {
 	palette = append(palette, color.RGBA{0, 0, 0, 255})
 	for i := 0; i < nframes; i++ {
 		scale := float64(i) / float64(nframes)
-		c := color.RGBA{uint8(55 + 200 * scale), uint8(55 + 200 * scale), uint8(55 + 200 * scale), 255}
+		c := color.RGBA{uint8(55 + 200*scale), uint8(55 + 200*scale), uint8(55 + 200*scale), 255}
 		palette = append(palette, c)
 	}
 	freq := rand.Float64() * 3.0 // relative frequency of y oscillator
@@ -73,7 +73,7 @@ func lissajous(cycles int, out io.Writer) {
 		for t := 0.0; t < float64(cycles)*2*math.Pi; t += res {
 			x := math.Sin(t)
 			y := math.Sin(t*freq + phase)
-			img.SetColorIndex(size+int(x*size+0.5), size+int(y*size+0.5), uint8((i % (len(palette)-1)) + 1))
+			img.SetColorIndex(size+int(x*size+0.5), size+int(y*size+0.5), uint8((i%(len(palette)-1))+1))
 		}
 		phase += 0.1
 		anim.Delay = append(anim.Delay, delay)

@@ -1,11 +1,11 @@
 package sexpr
 
 import (
-	"strings"
 	"bytes"
 	"fmt"
 	"reflect"
 	"strconv"
+	"strings"
 	"text/scanner"
 )
 
@@ -27,7 +27,6 @@ func Unmarshal(data []byte, out interface{}) (err error) {
 	return nil
 }
 
-
 type lexer struct {
 	scan  scanner.Scanner
 	token rune // the current token
@@ -42,7 +41,6 @@ func (lex *lexer) consume(want rune) {
 	}
 	lex.next()
 }
-
 
 // The read function is a decoder for a small subset of well-formed
 // S-expressions.  For brevity of our example, it takes many dubious
@@ -109,7 +107,6 @@ func read(lex *lexer, v reflect.Value) {
 	}
 	panic(fmt.Sprintf("unexpected token %q", lex.text()))
 }
-
 
 func readList(lex *lexer, v reflect.Value) {
 	switch v.Kind() {

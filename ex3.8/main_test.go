@@ -1,8 +1,8 @@
 package main
 
 import (
-	"testing"
 	"image/color"
+	"testing"
 )
 
 func benchmarkMandelbrot(b *testing.B, f func(complex128) color.Color) {
@@ -18,7 +18,6 @@ func BenchmarkMandelbrotComplex128(b *testing.B) {
 func BenchmarkMandelbrotComplex64(b *testing.B) {
 	benchmarkMandelbrot(b, mandelbrot64)
 }
-
 
 func BenchmarkMandelbrotBigFloat(b *testing.B) {
 	benchmarkMandelbrot(b, mandelbrotBigFloat)

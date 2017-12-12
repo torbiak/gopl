@@ -1,8 +1,8 @@
 package unique
 
 import (
-	"testing"
 	"reflect"
+	"testing"
 )
 
 func TestUnique(t *testing.T) {
