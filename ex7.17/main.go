@@ -14,13 +14,13 @@
 package main
 
 import (
+	"bytes"
 	"encoding/xml"
 	"fmt"
 	"io"
 	"os"
 	"strings"
 	"text/scanner"
-	"bytes"
 )
 
 // Lexer taken from gopl.io/ch5/eval
@@ -54,9 +54,8 @@ func (lex *lexer) text() string { return lex.scan.TokenText() }
 
 type lexPanic string
 
-
 type selector struct {
-	tag string
+	tag   string
 	attrs []attribute
 }
 
@@ -73,7 +72,6 @@ func (s selector) String() string {
 	}
 	return b.String()
 }
-
 
 type attribute struct {
 	Name, Value string
@@ -92,7 +90,6 @@ SelectorAttribute:
 	return true
 }
 
-
 func parseSelectors(input string) (_ []selector, err error) {
 	defer func() {
 		switch x := recover().(type) {
@@ -110,7 +107,7 @@ func parseSelectors(input string) (_ []selector, err error) {
 	lex.scan.Init(strings.NewReader(input))
 	lex.scan.Mode = scanner.ScanIdents | scanner.ScanStrings
 	lex.scan.Whitespace = 0 // handle whitespace ourselves
-	lex.next() // initial lookahead
+	lex.next()              // initial lookahead
 
 	selectors := make([]selector, 0)
 	for lex.token != scanner.EOF {
@@ -146,7 +143,7 @@ func parseAttr(lex *lexer) attribute {
 		panic(lexPanic(fmt.Sprintf("got %s, want ident", lex.describe())))
 	}
 	attr.Name = lex.text()
-	lex.next() // consume ident
+	lex.next()            // consume ident
 	if lex.token != '=' { // No value given for the attribute.
 		if lex.token != ']' {
 			panic(lexPanic(fmt.Sprintf("got %s, want ']'", lex.describe())))
@@ -170,7 +167,6 @@ func parseAttr(lex *lexer) attribute {
 	lex.next() // consume ']'
 	return attr
 }
-
 
 func isSelected(stack []xml.StartElement, sels []selector) bool {
 	if len(stack) < len(sels) {

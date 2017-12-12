@@ -5,7 +5,7 @@ import (
 )
 
 func TestIsAnagram(t *testing.T) {
-	tests := []struct{
+	tests := []struct {
 		a, b string
 		want bool
 	}{

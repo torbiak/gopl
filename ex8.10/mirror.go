@@ -4,18 +4,18 @@
 package main
 
 import (
-	"io"
 	"bytes"
-	"strings"
-	"os"
-	"os/signal"
 	"flag"
 	"fmt"
+	"io"
 	"log"
-	"sync"
-	"net/url"
 	"net/http"
+	"net/url"
+	"os"
+	"os/signal"
 	"path/filepath"
+	"strings"
+	"sync"
 
 	"golang.org/x/net/html"
 )
@@ -102,7 +102,6 @@ func linkURLs(linkNodes []*html.Node, base *url.URL) []string {
 	return urls
 }
 
-
 // rewriteLocalLinks rewrites local links to be relative and links without
 // extensions to point to index.html, eg /hi/there -> /hi/there/index.html.
 func rewriteLocalLinks(linkNodes []*html.Node, base *url.URL) {
@@ -169,7 +168,6 @@ func visit(rawurl string) (urls []string, err error) {
 	err = save(resp, body)
 	return urls, err
 }
-
 
 // If resp.Body has already been consumed, `body` can be passed and will be
 // read instead.

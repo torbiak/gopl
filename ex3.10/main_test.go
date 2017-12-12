@@ -5,7 +5,7 @@ import (
 )
 
 func TestComma(t *testing.T) {
-	tests := []struct{
+	tests := []struct {
 		s, want string
 	}{
 		{"1", "1"},
@@ -20,7 +20,7 @@ func TestComma(t *testing.T) {
 		{"1234567890", "1,234,567,890"},
 	}
 	for _, test := range tests {
-		got := comma(test.s) 
+		got := comma(test.s)
 		if got != test.want {
 			t.Errorf("comma(%q), got %q, want %q", test.s, got, test.want)
 		}

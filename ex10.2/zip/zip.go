@@ -1,10 +1,10 @@
 package zip
 
 import (
-	"io"
 	"archive/zip"
-	"os"
 	"fmt"
+	"io"
+	"os"
 
 	arprint "github.com/torbiak/gopl/ex10.2"
 )
@@ -12,8 +12,8 @@ import (
 type reader struct {
 	zipReader *zip.Reader
 	filesLeft []*zip.File
-	r io.ReadCloser
-	toWrite string
+	r         io.ReadCloser
+	toWrite   string
 }
 
 func (r *reader) Read(b []byte) (int, error) {
@@ -28,7 +28,7 @@ func (r *reader) Read(b []byte) (int, error) {
 		if err != nil {
 			return 0, fmt.Errorf("read zip: %s", err)
 		}
-		if f.Mode() & os.ModeDir == 0 {
+		if f.Mode()&os.ModeDir == 0 {
 			r.toWrite = f.Name + ":\n"
 		}
 	}

@@ -2,15 +2,15 @@
 package main
 
 import (
-	"os"
 	"fmt"
+	"os"
 	"strings"
 )
 
 // prereqs maps computer science courses to their prerequisites.
 var prereqs = map[string][]string{
-	"algorithms": {"data structures"},
-	"calculus":   {"linear algebra"},
+	"algorithms":     {"data structures"},
+	"calculus":       {"linear algebra"},
 	"linear algebra": {"calculus"},
 	// uncomment line below to introduce a dependency cycle.
 	//"intro to programming": {"data structures"},

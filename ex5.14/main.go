@@ -42,12 +42,10 @@ func breadthFirst(f func(item string) []string, worklist []string) {
 	}
 }
 
-
 func deps(course string) []string {
 	fmt.Println(course)
 	return prereqs[course]
 }
-
 
 func main() {
 	var course string

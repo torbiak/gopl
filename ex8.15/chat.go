@@ -9,13 +9,12 @@ import (
 	"time"
 )
 
-const timeout = 10*time.Second
+const timeout = 10 * time.Second
 
 type client struct {
-	Out chan<- string // outgoing message channel
+	Out  chan<- string // outgoing message channel
 	Name string
 }
-
 
 var (
 	entering = make(chan client)
@@ -105,7 +104,6 @@ func clientReader(conn net.Conn, ch chan<- string) {
 	// NOTE: ignoring potential errors from input.Err()
 }
 
-
 func main() {
 	listener, err := net.Listen("tcp", "localhost:8000")
 	if err != nil {
@@ -122,4 +120,3 @@ func main() {
 		go handleConn(conn)
 	}
 }
-

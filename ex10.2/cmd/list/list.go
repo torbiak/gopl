@@ -2,10 +2,10 @@ package main
 
 import (
 	"archive/tar"
-	"os"
 	"fmt"
-	"log"
 	"io"
+	"log"
+	"os"
 
 	mytar "github.com/torbiak/gopl/ex10.2/tar"
 )

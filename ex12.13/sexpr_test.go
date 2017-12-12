@@ -1,9 +1,9 @@
 package sexpr
 
 import (
+	"fmt"
 	"reflect"
 	"testing"
-	"fmt"
 )
 
 // Test verifies that encoding and decoding a complex data value
@@ -68,19 +68,19 @@ func Test(t *testing.T) {
 func TestMarshal(t *testing.T) {
 	type Interface interface{}
 	type Record struct {
-		B bool `sexpr:"bee"`
-		F32 float32
-		F64 float64
-		C64 complex64
+		B    bool `sexpr:"bee"`
+		F32  float32
+		F64  float64
+		C64  complex64
 		C128 complex128
-		I Interface
+		I    Interface
 	}
 	tests := []struct {
-		r Record
+		r    Record
 		want string
 	}{
 		{
-			Record{true, 2.5, 0, 1+2i, 2+3i, Interface(5)},
+			Record{true, 2.5, 0, 1 + 2i, 2 + 3i, Interface(5)},
 			`((bee t) (F32 2.5) (F64 0) (C64 #C(1 2)) (C128 #C(2 3)) (I ("sexpr.Interface" 5)))`,
 		},
 		{
@@ -103,16 +103,16 @@ func TestMarshal(t *testing.T) {
 func TestUnmarshal(t *testing.T) {
 	type Interface interface{}
 	type Record struct {
-		B bool
-		F32 float32
-		F64 float64
-		C64 complex64
+		B    bool
+		F32  float32
+		F64  float64
+		C64  complex64
 		C128 complex128
-		I Interface `sexpr:"face"`
+		I    Interface `sexpr:"face"`
 	}
 	Interfaces["sexpr.Interface"] = reflect.TypeOf(int(0))
 	tests := []struct {
-		s string
+		s    string
 		want Record
 	}{
 		{

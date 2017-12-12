@@ -58,7 +58,7 @@ func popcount(x uint64) int {
 	count := 0
 	for x != 0 {
 		count++
-		x &= x-1
+		x &= x - 1
 	}
 	return count
 }
@@ -92,7 +92,6 @@ func (s *BitIntSet) Copy() IntSet {
 	copy(new.words, s.words)
 	return new
 }
-
 
 // String returns the set as a string of the form "{1 2 3}".
 func (s *BitIntSet) String() string {

@@ -5,11 +5,11 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"net/http"
-	"strings"
 	"strconv"
-	"fmt"
+	"strings"
 
 	eval "github.com/torbiak/gopl/ex7.14"
 )
@@ -31,7 +31,6 @@ func parseEnv(s string) (eval.Env, error) {
 	}
 	return env, nil
 }
-
 
 func main() {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {

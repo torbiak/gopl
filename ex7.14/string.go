@@ -1,8 +1,8 @@
 package eval
 
 import (
-	"fmt"
 	"bytes"
+	"fmt"
 )
 
 func (v Var) String() string {

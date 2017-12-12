@@ -15,8 +15,8 @@ import "C"
 
 import (
 	"io"
-	"unsafe"
 	"sync"
+	"unsafe"
 )
 
 type writer struct {
@@ -35,7 +35,6 @@ func NewWriter(out io.Writer) io.WriteCloser {
 	C.BZ2_bzCompressInit(w.stream, blockSize, verbosity, workFactor)
 	return w
 }
-
 
 func (w *writer) Write(data []byte) (int, error) {
 	if w.stream == nil {
@@ -58,7 +57,6 @@ func (w *writer) Write(data []byte) (int, error) {
 	}
 	return total, nil
 }
-
 
 // Close flushes the compressed data and closes the stream.
 // It does not close the underlying io.Writer.

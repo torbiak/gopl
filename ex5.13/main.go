@@ -4,13 +4,13 @@
 package main
 
 import (
-	"io"
 	"fmt"
+	"io"
 	"log"
+	"net/http"
+	"net/url"
 	"os"
 	"path/filepath"
-	"net/url"
-	"net/http"
 
 	"gopl.io/ch5/links"
 )
@@ -33,6 +33,7 @@ func breadthFirst(f func(item string) []string, worklist []string) {
 }
 
 var origHost string
+
 func save(rawurl string) error {
 	url, err := url.Parse(rawurl)
 	if err != nil {

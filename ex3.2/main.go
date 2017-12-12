@@ -10,7 +10,7 @@ import (
 
 const (
 	width, height = 600, 320            // canvas size in pixels
-	cells         = 40                 // number of grid cells
+	cells         = 40                  // number of grid cells
 	xyrange       = 30.0                // axis ranges (-xyrange..+xyrange)
 	xyscale       = width / 2 / xyrange // pixels per x or y unit
 	zscale        = height * 0.4        // pixels per z unit
@@ -62,13 +62,13 @@ func eggbox(x, y float64) float64 {
 func saddle(x, y float64) float64 {
 	a := 25.0
 	b := 17.0
-	a2 := a*a
-	b2 := b*b
+	a2 := a * a
+	b2 := b * b
 	return (y*y/a2 - x*x/b2)
 }
 
 func main() {
-	usage :=  "usage: ex3.2 saddle|eggbox"
+	usage := "usage: ex3.2 saddle|eggbox"
 	if len(os.Args) < 2 {
 		fmt.Fprintln(os.Stderr, usage)
 		os.Exit(1)

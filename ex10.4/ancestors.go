@@ -2,14 +2,14 @@
 package main
 
 import (
-	"bytes"
 	"bufio"
+	"bytes"
+	"fmt"
 	"log"
 	"os"
-	"fmt"
-	"strings"
 	"os/exec"
 	"sort"
+	"strings"
 )
 
 func logCommandError(context string, err error) {

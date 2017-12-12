@@ -19,9 +19,8 @@ func TestCyclic(t *testing.T) {
 	f.next = &d
 	cyclicList := d
 
-
-	tests := []struct{
-		x interface{}
+	tests := []struct {
+		x    interface{}
 		want bool
 	}{
 		{1, false},

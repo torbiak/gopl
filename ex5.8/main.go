@@ -3,8 +3,8 @@ package main
 
 import (
 	"fmt"
-	"os"
 	"log"
+	"os"
 
 	"golang.org/x/net/html"
 )
@@ -47,7 +47,6 @@ func forEachElement(n *html.Node, pre, post func(n *html.Node) bool) *html.Node 
 	}
 	return nil
 }
-
 
 func main() {
 	if len(os.Args) != 3 {

@@ -2,18 +2,18 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
-	"strings"
 	"os"
 	"strconv"
-	"bufio"
+	"strings"
 
 	eval "github.com/torbiak/gopl/ex7.14"
 )
 
 const assignment_error = 2
 
-func main () {
+func main() {
 	exitCode := 0
 	stdin := bufio.NewScanner(os.Stdin)
 	fmt.Printf("Expression: ")

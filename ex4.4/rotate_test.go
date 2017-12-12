@@ -1,8 +1,8 @@
 package rotate
 
 import (
-	"testing"
 	"reflect"
+	"testing"
 )
 
 func TestRotate(t *testing.T) {

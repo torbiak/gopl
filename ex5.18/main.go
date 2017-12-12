@@ -37,7 +37,6 @@ func fetch(url string) (filename string, n int64, err error) {
 	return local, n, err
 }
 
-
 func main() {
 	for _, url := range os.Args[1:] {
 		local, n, err := fetch(url)

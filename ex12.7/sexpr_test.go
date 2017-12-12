@@ -4,10 +4,10 @@
 package sexpr
 
 import (
+	"bytes"
+	"fmt"
 	"reflect"
 	"testing"
-	"fmt"
-	"bytes"
 )
 
 // Test verifies that encoding and decoding a complex data value
@@ -71,7 +71,7 @@ func Test(t *testing.T) {
 
 func TestBool(t *testing.T) {
 	tests := []struct {
-		v bool
+		v    bool
 		want string
 	}{
 		{true, "t"},
@@ -90,7 +90,7 @@ func TestBool(t *testing.T) {
 
 func TestFloat32(t *testing.T) {
 	tests := []struct {
-		v float32
+		v    float32
 		want string
 	}{
 		{3.2e9, "3.2e+09"},
@@ -110,7 +110,7 @@ func TestFloat32(t *testing.T) {
 
 func TestFloat64(t *testing.T) {
 	tests := []struct {
-		v float64
+		v    float64
 		want string
 	}{
 		{3.2e9, "3.2e+09"},
@@ -130,11 +130,11 @@ func TestFloat64(t *testing.T) {
 
 func TestComplex64(t *testing.T) {
 	tests := []struct {
-		v complex64
+		v    complex64
 		want string
 	}{
 		{0 + 0i, "#C(0 0)"},
-		{3-2i, "#C(3 -2)"},
+		{3 - 2i, "#C(3 -2)"},
 		{-1e9 + -2.2e9i, "#C(-1e+09 -2.2e+09)"},
 	}
 	for _, test := range tests {
@@ -150,11 +150,11 @@ func TestComplex64(t *testing.T) {
 
 func TestComplex128(t *testing.T) {
 	tests := []struct {
-		v complex128
+		v    complex128
 		want string
 	}{
 		{0 + 0i, "#C(0 0)"},
-		{3-2i, "#C(3 -2)"},
+		{3 - 2i, "#C(3 -2)"},
 		{-1e9 + -2.2e9i, "#C(-1e+09 -2.2e+09)"},
 	}
 	for _, test := range tests {

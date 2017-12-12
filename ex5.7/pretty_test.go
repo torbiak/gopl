@@ -1,9 +1,9 @@
 package main
 
 import (
-	"testing"
 	"bytes"
 	"strings"
+	"testing"
 
 	"golang.org/x/net/html"
 )
@@ -29,7 +29,7 @@ func TestPrettyOutputCanBeParsed(t *testing.T) {
 		t.Fail()
 	}
 	_, err = html.Parse(bytes.NewReader(b.Bytes()))
-	if err!= nil {
+	if err != nil {
 		t.Log(err)
 		t.Fail()
 	}

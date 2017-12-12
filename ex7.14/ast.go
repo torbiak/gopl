@@ -40,7 +40,7 @@ type call struct {
 
 type postUnary struct {
 	op rune // one of '!'
-	x Expr
+	x  Expr
 }
 
 //!-ast

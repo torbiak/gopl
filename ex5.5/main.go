@@ -2,11 +2,11 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
 	"log"
-	"os"
 	"net/http"
-	"bufio"
+	"os"
 	"strings"
 
 	"golang.org/x/net/html"

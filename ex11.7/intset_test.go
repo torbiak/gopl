@@ -1,8 +1,8 @@
 package main
 
 import (
-	"testing"
 	"math/rand"
+	"testing"
 )
 
 func newIntSets() []IntSet {

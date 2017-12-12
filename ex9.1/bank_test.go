@@ -47,7 +47,7 @@ func TestWithdrawal(t *testing.T) {
 
 func TestWithdrawalFailsIfInsufficientFunds(t *testing.T) {
 	b1 := Balance()
-	ok := Withdraw(b1+1)
+	ok := Withdraw(b1 + 1)
 	b2 := Balance()
 	if ok {
 		t.Errorf("ok = true, want false. balance = %d", b2)

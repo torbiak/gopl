@@ -23,7 +23,6 @@ var colorPool = []color.RGBA{
 
 var chosenColors = map[complex128]color.RGBA{}
 
-
 func main() {
 	const (
 		xmin, ymin, xmax, ymax = -2, -2, +2, +2
@@ -54,17 +53,16 @@ func mandelbrot(z complex128) color.Color {
 			switch {
 			case n > 50: // dark red
 				return color.RGBA{100, 0, 0, 255}
-			default: 
+			default:
 				// logarithmic blue gradient to show small differences on the
 				// periphery of the fractal.
-				logScale := math.Log(float64(n))/math.Log(float64(iterations))
+				logScale := math.Log(float64(n)) / math.Log(float64(iterations))
 				return color.RGBA{0, 0, 255 - uint8(logScale*255), 255}
 			}
 		}
 	}
 	return color.Black
 }
-
 
 // Some other interesting functions:
 
@@ -89,7 +87,7 @@ func sqrt(z complex128) color.Color {
 //    = z - (z - 1/z^3) / 4
 func z4(z complex128) color.Color {
 	f := func(z complex128) complex128 {
-		return z*z*z*z-1
+		return z*z*z*z - 1
 	}
 	fPrime := func(z complex128) complex128 {
 		return (z - 1/(z*z*z)) / 4
@@ -142,5 +140,5 @@ func round(f float64, digits int) float64 {
 		return 0
 	}
 	pow := math.Pow10(digits)
-	return math.Trunc(f*pow + math.Copysign(0.5, f)) / pow
+	return math.Trunc(f*pow+math.Copysign(0.5, f)) / pow
 }

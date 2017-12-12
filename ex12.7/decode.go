@@ -3,10 +3,10 @@ package sexpr
 import (
 	"bytes"
 	"fmt"
+	"io"
 	"reflect"
 	"strconv"
 	"text/scanner"
-	"io"
 )
 
 type Decoder struct {

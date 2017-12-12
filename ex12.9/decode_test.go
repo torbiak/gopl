@@ -1,16 +1,16 @@
 package decode
 
 import (
-	"testing"
-	"strings"
-	"reflect"
 	"io"
+	"reflect"
+	"strings"
+	"testing"
 )
 
 func TestDecoder(t *testing.T) {
 	tests := []struct {
-		s string
-		want []Token
+		s            string
+		want         []Token
 		errSubstring string
 	}{
 		{`(3 "a" (b))`, []Token{StartList{}, Int(3), String("a"), StartList{}, Symbol("b"), EndList{}, EndList{}}, ""},

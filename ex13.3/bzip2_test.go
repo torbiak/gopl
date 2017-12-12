@@ -1,14 +1,14 @@
 package bzip
 
 import (
-	"fmt"
+	"bufio"
 	"bytes"
 	"compress/bzip2" // reader
+	"fmt"
 	"io"
-	"testing"
-	"bufio"
 	"strconv"
 	"sync"
+	"testing"
 )
 
 func TestBzip2(t *testing.T) {

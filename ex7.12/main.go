@@ -2,12 +2,12 @@
 package main
 
 import (
-	"net/http"
 	"fmt"
-	"sync"
-	"strconv"
-	"log"
 	"html/template"
+	"log"
+	"net/http"
+	"strconv"
+	"sync"
 )
 
 var listHTML = template.Must(template.New("list").Parse(`

@@ -31,8 +31,8 @@ func TestEqualish(t *testing.T) {
 	}{
 		// basic types
 		{0, 0, true},
-		{1000000000.9999, 1000000000.0, true}, // almost one part in a billion
-		{1000000001, 1000000000, false}, // one part in a billion
+		{1000000000.9999, 1000000000.0, true},      // almost one part in a billion
+		{1000000001, 1000000000, false},            // one part in a billion
 		{uint(1000000011), uint(1000000011), true}, // almost one part in a billion
 		{1, 1, true},
 		{1, 2, false},   // different values

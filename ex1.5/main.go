@@ -19,7 +19,6 @@ import (
 	"time"
 )
 
-
 var palette = []color.Color{color.Black, color.RGBA{0, 255, 0, 255}}
 
 const (

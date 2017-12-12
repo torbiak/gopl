@@ -12,7 +12,7 @@ type Kelvin float64
 
 func CToF(c Celsius) Fahrenheit { return Fahrenheit(c*9.0/5.0 + 32.0) }
 func FToC(f Fahrenheit) Celsius { return Celsius((f - 32.0) * 5.0 / 9.0) }
-func KToC(k Kelvin) Celsius { return Celsius(k - 273.15) }
+func KToC(k Kelvin) Celsius     { return Celsius(k - 273.15) }
 
 func (c Celsius) String() string { return fmt.Sprintf("%.3g°C", c) }
 
@@ -36,8 +36,6 @@ func (f *celsiusFlag) Set(s string) error {
 	}
 	return fmt.Errorf("invalid temperature %q", s)
 }
-
-
 
 // CelsiusFlag defines a Celsius flag with the specified name,
 // default value, and usage, and returns the address of the flag variable.

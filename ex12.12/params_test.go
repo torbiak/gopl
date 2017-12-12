@@ -1,12 +1,12 @@
 package params
 
 import (
-	"reflect"
-	"strings"
-	"testing"
 	"fmt"
 	"net/http"
 	"net/url"
+	"reflect"
+	"strings"
+	"testing"
 )
 
 func lt100(v interface{}) error {
@@ -25,8 +25,8 @@ func testChecks(t *testing.T) {
 		post int `http:p,check:"lt100"`
 	}
 	tests := []struct {
-		req *http.Request
-		want unpacked
+		req       *http.Request
+		want      unpacked
 		errSubstr string
 	}{
 		{

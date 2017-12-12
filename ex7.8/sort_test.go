@@ -1,8 +1,8 @@
 package column
 
 import (
-	"testing"
 	"sort"
+	"testing"
 )
 
 func Cmp(a, b []Person, t *testing.T) {

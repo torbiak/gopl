@@ -243,7 +243,7 @@ func Test(t *testing.T) {
 }
 
 func TestMapKeys(t *testing.T) {
-	sm := map[struct{x int}]int{
+	sm := map[struct{ x int }]int{
 		{1}: 2,
 		{2}: 3,
 	}
@@ -254,8 +254,8 @@ func TestMapKeys(t *testing.T) {
 	// sm[{x: 1}] = 2
 
 	am := map[[3]int]int{
-		{1,2,3}: 3,
-		{2,3,4}: 4,
+		{1, 2, 3}: 3,
+		{2, 3, 4}: 4,
 	}
 	Display("am", am)
 	// Output:

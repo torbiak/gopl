@@ -1,17 +1,17 @@
 package tar
 
 import (
+	"archive/tar"
 	"io"
 	"os"
-	"archive/tar"
 
 	arprint "github.com/torbiak/gopl/ex10.2"
 )
 
 type reader struct {
 	tarReader *tar.Reader
-	file *os.File
-	toWrite string
+	file      *os.File
+	toWrite   string
 }
 
 func (r *reader) Read(b []byte) (written int, err error) {

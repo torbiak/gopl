@@ -2,7 +2,7 @@
 package bank
 
 type Withdrawal struct {
-	amount int
+	amount  int
 	success chan bool
 }
 
@@ -17,7 +17,6 @@ func Withdraw(amount int) bool {
 	withdrawals <- Withdrawal{amount, ch}
 	return <-ch
 }
-
 
 func teller() {
 	var balance int // balance is confined to teller goroutine

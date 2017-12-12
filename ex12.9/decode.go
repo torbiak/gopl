@@ -2,10 +2,10 @@
 package decode
 
 import (
+	"fmt"
+	"io"
 	"strconv"
 	"text/scanner"
-	"io"
-	"fmt"
 )
 
 type Token interface{}
@@ -28,8 +28,8 @@ func (s EndList) String() string {
 }
 
 type Decoder struct {
-	scan scanner.Scanner
-	err error
+	scan  scanner.Scanner
+	err   error
 	depth int
 }
 
@@ -61,7 +61,7 @@ func (d *Decoder) Token() (Token, error) {
 	case scanner.String:
 		text := d.scan.TokenText()
 		// Assume all strings are quoted.
-		return String(text[1:len(text)-1]), nil
+		return String(text[1 : len(text)-1]), nil
 	case scanner.Int:
 		n, err := strconv.ParseInt(d.scan.TokenText(), 10, 64)
 		if err != nil {

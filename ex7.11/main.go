@@ -2,11 +2,11 @@
 package main
 
 import (
-	"net/http"
 	"fmt"
-	"sync"
-	"strconv"
 	"log"
+	"net/http"
+	"strconv"
+	"sync"
 )
 
 type PriceDB struct {
