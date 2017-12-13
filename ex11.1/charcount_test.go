@@ -23,6 +23,7 @@ func TestCharCount(t *testing.T) {
 				"Pattern_White_Space": 1,
 				"STerm": 1,
 				"Soft_Dotted": 1,
+				"Sentence_Terminal": 1,
 				"Terminal_Punctuation": 2,
 				"Unified_Ideograph": 1,
 				"White_Space": 1,
