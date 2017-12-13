@@ -40,7 +40,7 @@ var html = template.Must(template.New("people").Parse(`
 `))
 
 func main() {
-	c := column.NewByColumns(people)
+	c := column.NewByColumns(people, 2)
 	http.HandleFunc("/", func (w http.ResponseWriter, r *http.Request) {
 		switch r.FormValue("sort") {
 		case "age":
