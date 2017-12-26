@@ -1,4 +1,4 @@
-// ex2.2 prints measumrents given on the command line or stdin in various
+// ex2.2 prints measurements given on the command line or stdin in various
 // units.
 package main
 
