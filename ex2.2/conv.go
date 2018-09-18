@@ -29,7 +29,7 @@ func FromMeters(m float64) Distance {
 }
 
 func (d Distance) String() string {
-	return fmt.Sprintf("%.3gm == %.3gft", d.meters, d.Feet())
+	return fmt.Sprintf("%.3gm = %.3gft", d.meters, d.Feet())
 }
 
 func (d Distance) Meters() float64 {
