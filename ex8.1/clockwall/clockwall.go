@@ -1,10 +1,21 @@
-// clockwall listens to multiple clock servers concurrently.
+// Clockwall connects to a series of clock servers and prints them
+// to stdout every second.
+//
+//Expects a usage statement like this:
+// ./wall "New York=8000" Chicago=8010 "Los Angeles=8020"
+//
+// Output like this:
+// New York: 03:04:05	Chicago: 02:04:05	Los Angeles: 00:04:05
+//
+// Build Note: The folder is called clockwall and so is the program so
+// consider a build instruction issued from the ex8.1 root folder like:
+// `build -o wall clockwall/clockwall.go`
+
 package main
 
 import (
 	"bufio"
 	"fmt"
-	"io"
 	"log"
 	"net"
 	"os"
@@ -13,44 +24,52 @@ import (
 )
 
 type clock struct {
-	name, host string
+	name       string
+	host       string
+	connection *net.Conn
+	current    string
 }
 
-func (c *clock) watch(w io.Writer, r io.Reader) {
-	s := bufio.NewScanner(r)
-	for s.Scan() {
-		fmt.Fprintf(w, "%s: %s\n", c.name, s.Text())
-	}
-	fmt.Println(c.name, "done")
-	if s.Err() != nil {
-		log.Printf("can't read from %s: %s", c.name, s.Err())
-	}
-}
+var clocks []*clock
 
 func main() {
-	if len(os.Args) == 1 {
-		fmt.Fprintln(os.Stderr, "usage: clockwall NAME=HOST ...")
-		os.Exit(1)
-	}
-	clocks := make([]*clock, 0)
-	for _, a := range os.Args[1:] {
-		fields := strings.Split(a, "=")
-		if len(fields) != 2 {
-			fmt.Fprintf(os.Stderr, "bad arg: %s\n", a)
-			os.Exit(1)
+	pairs := os.Args[1:]
+	for _, item := range pairs {
+		tokens := strings.Split(item, "=")
+		if len(tokens) == 2 {
+			addr := net.JoinHostPort("localhost", tokens[1])
+			conn, err := net.Dial("tcp", addr)
+			if err != nil {
+				log.Fatal(err)
+			}
+			clocks = append(clocks, &clock{tokens[0], addr, &conn, ""})
 		}
-		clocks = append(clocks, &clock{fields[0], fields[1]})
 	}
-	for _, c := range clocks {
-		conn, err := net.Dial("tcp", c.host)
-		if err != nil {
-			log.Fatal(err)
-		}
-		defer conn.Close()
-		go c.watch(os.Stdout, conn)
-	}
-	// Sleep while other goroutines do the work.
+	defer closeClocks()
+
 	for {
-		time.Sleep(time.Minute)
+		for _, c := range clocks {
+			s := bufio.NewScanner(*c.connection)
+			s.Scan()
+			if s.Err() != nil {
+				log.Printf("can't read from %s: %s", c.name, s.Err())
+			}
+			c.current = s.Text()
+			fmt.Fprintf(os.Stdout, " %s: %s\t", c.name, c.current)
+		}
+		fmt.Fprintf(os.Stdout, "\r")
+		time.Sleep(100 * time.Millisecond)
+	}
+}
+
+func closeClocks() {
+	for _, c := range clocks {
+		(*c.connection).Close()
+	}
+}
+
+func closeConns(conns []*net.Conn) {
+	for _, c := range conns {
+		(*c).Close()
 	}
 }
