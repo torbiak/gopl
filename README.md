@@ -31,7 +31,7 @@ Many of the exercises are based on an example from the book or an earlier exerci
 * [ex1.10](ex1.10): ex1.10 fetches URLs in parallel and reports their times and sizes.
 * [ex1.12](ex1.12): ex1.6 generates GIF animations of random Lissajous figures, with a gradient applied on the time dimension and the number of cycles to display can be supplied in the url query string when running as a web server.
 * [ex2.1](ex2.1): ex2.1 performs Celsius, Fahrenheit, and Kelvin conversions.
-* [ex2.2](ex2.2): ex2.2 prints measumrents given on the command line or stdin in various units.
+* [ex2.2](ex2.2): ex2.2 prints measurements given on the command line or stdin in various units.
 * [ex2.3](ex2.3): ex2.3: compare popcount implementations: looping and single-expression bytewise table lookups.
 * [ex2.4](ex2.4): ex2.4: compare popcount implementations, including looping table lookups and shift value.
 * [ex2.5](ex2.5): ex2.4: compare popcount implementations, including clear rightmost.
@@ -108,7 +108,7 @@ Many of the exercises are based on an example from the book or an earlier exerci
 * [ex8.2](ex8.2): ex8.2 is a minimal ftp server as per section 5.1 of RFC 959.
 * [ex8.3](ex8.3): ex8.3 is a simple read/write client for TCP servers.
 * [ex8.4](ex8.4): ex8.4 is a reverb server that uses sync.WaitGroup to choose when to close connections.
-* [ex8.5](ex8.5): ex8.5 is a parallellized Mandelbrot fractal generator.
+* [ex8.5](ex8.5): ex8.5 is a parallelized Mandelbrot fractal generator.
 * [ex8.6](ex8.6): ex8.6 is a depth-limited web crawler.
 * [ex8.7](ex8.7): ex8.7 mirrors a website to a given depth using multiple goroutines and rewrites local links.
 * [ex8.8](ex8.8): ex8.8 is a reverb server that disconnects inactive clients.
@@ -143,7 +143,7 @@ Many of the exercises are based on an example from the book or an earlier exerci
 * [ex12.6](ex12.6): ex12.6 is an s-expression codec that doesn't encode zero values.
 * [ex12.7](ex12.7): ex12.7 provides a streaming decoder for s-expressions.
 * [ex12.8](ex12.8): ex12.8 can unmarshall s-expressions from an io.Reader.
-* [ex12.9](ex12.9): ex12.9 is token-based API for decosing s-expressions.
+* [ex12.9](ex12.9): ex12.9 is token-based API for decoding s-expressions.
 * [ex12.10](ex12.10): ex12.10 is a s-expression codec that can decode booleans, floating point numbers, and registered interface values.
 * [ex12.11](ex12.11): ex12.11 provides a reflection-based codec for URL query parameters.
 * [ex12.12](ex12.12): ex12.12 provides a URL query parameter codec with validation triggered by struct tags.
