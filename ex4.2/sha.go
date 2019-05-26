@@ -6,9 +6,7 @@ import (
 	"crypto/sha512"
 	"flag"
 	"fmt"
-	"io/ioutil"
 	"log"
-	"os"
 )
 
 var width = flag.Int("w", 256, "hash width (256 or 512)")
@@ -30,9 +28,8 @@ func main() {
 	default:
 		log.Fatal("Unexpected width specified.")
 	}
-	b, err := ioutil.ReadAll(os.Stdin)
-	if err != nil {
-		log.Fatal(err)
-	}
-	fmt.Printf("%x\n", function(b))
+
+	var b string
+	fmt.Scanf("%s", &b)
+	fmt.Printf("%x\n", function([]byte(b)))
 }
