@@ -10,11 +10,16 @@ type stringReader struct {
 }
 
 func (r *stringReader) Read(p []byte) (n int, err error) {
+	if len(r.s) == 0 {
+		return 0, io.EOF
+	}
+
 	n = copy(p, r.s)
 	r.s = r.s[n:]
 	if len(r.s) == 0 {
 		err = io.EOF
 	}
+
 	return
 }
 
