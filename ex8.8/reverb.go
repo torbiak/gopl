@@ -41,19 +41,22 @@ func handleConn(c net.Conn) {
 		c.Close()
 	}()
 	lines := make(chan string)
+	ticker := time.NewTicker(1 * time.Second)
 	go scan(c, lines)
-	timeout := 2 * time.Second
-	timer := time.NewTimer(2 * time.Second)
 	for {
-		select {
-		case line := <-lines:
-			timer.Reset(timeout)
-			wg.Add(1)
-			go echo(c, line, 1*time.Second, wg)
-		case <-timer.C:
-			return
+        for countdown := 10; countdown > 0; countdown-- {
+			select {
+			case line := <-lines:
+                countdown = 10
+				wg.Add(1)
+				go echo(c, line, 1*time.Second, wg)
+			case <-ticker.C:
+			}
 		}
-	}
+		// Timeout
+		ticker.Stop()
+        return
+    }
 }
 
 func main() {
