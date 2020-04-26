@@ -67,7 +67,7 @@ func TestIntersectWith(t *testing.T) {
 	s := &IntSet{}
 	s.AddAll(0, 2, 4)
 	u := &IntSet{}
-	u.AddAll(1, 2, 3)
+	u.AddAll(1, 2, 3, 86)
 	s.IntersectWith(u)
 	if !s.Has(2) || s.Len() != 1 {
 		t.Log(s)
@@ -79,7 +79,7 @@ func TestDifferenceWith(t *testing.T) {
 	s := &IntSet{}
 	s.AddAll(0, 2, 4)
 	u := &IntSet{}
-	u.AddAll(1, 2, 3)
+	u.AddAll(1, 2, 3, 86)
 	s.DifferenceWith(u)
 	expected := &IntSet{}
 	expected.AddAll(0, 4)
@@ -93,7 +93,7 @@ func TestSymmetricDifference(t *testing.T) {
 	s := &IntSet{}
 	s.AddAll(0, 2, 4)
 	u := &IntSet{}
-	u.AddAll(1, 2, 3)
+	u.AddAll(1, 2, 3, 86)
 	s.SymmetricDifference(u)
 	expected := &IntSet{}
 	expected.AddAll(0, 1, 3, 4)
