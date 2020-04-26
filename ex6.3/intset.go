@@ -49,9 +49,8 @@ func (s *IntSet) IntersectWith(t *IntSet) {
 	for i, tword := range t.words {
 		if i < len(s.words) {
 			s.words[i] &= tword
-		} else {
-			s.words = append(s.words, tword)
 		}
+		// Don't need to go further since 0 & t = 0
 	}
 }
 
@@ -60,9 +59,8 @@ func (s *IntSet) DifferenceWith(t *IntSet) {
 	for i, tword := range t.words {
 		if i < len(s.words) {
 			s.words[i] &^= tword
-		} else {
-			s.words = append(s.words, tword)
 		}
+		// Don't need to go further since t should subract from s
 	}
 }
 
@@ -72,7 +70,7 @@ func (s *IntSet) SymmetricDifference(t *IntSet) {
 		if i < len(s.words) {
 			s.words[i] ^= tword
 		} else {
-			s.words = append(s.words, tword)
+			s.words = append(s.words, 0^tword)
 		}
 	}
 }
