@@ -12,7 +12,7 @@ import (
 )
 
 func printTagText(r io.Reader, w io.Writer) error {
-	z := html.NewTokenizer(os.Stdin)
+	z := html.NewTokenizer(r)
 	var err error
 	stack := make([]string, 20)
 Tokenize:
