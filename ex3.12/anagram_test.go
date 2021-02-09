@@ -10,6 +10,7 @@ func TestIsAnagram(t *testing.T) {
 		want bool
 	}{
 		{"aba", "baa", true},
+		{"aba", "aba", false}, // same frequencies but same string
 		{"aaa", "baa", false}, // same characters but different frequencies
 	}
 	for _, test := range tests {
