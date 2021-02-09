@@ -20,5 +20,5 @@ func isAnagram(a, b string) bool {
 			return false
 		}
 	}
-	return a == b
+	return a != b
 }
