@@ -101,9 +101,7 @@ func (s *IntSet) Remove(x int) {
 
 // remove all elements from the set
 func (s *IntSet) Clear() {
-	for i := range s.words {
-		s.words[i] = 0
-	}
+	s.words = nil
 }
 
 // return a copy of the set
