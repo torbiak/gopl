@@ -59,12 +59,8 @@ func (s *IntSet) IntersectWith(t *IntSet) {
 
 // Set s to the difference of s and t.
 func (s *IntSet) DifferenceWith(t *IntSet) {
-	for i, tword := range t.words {
-		if i < len(s.words) {
-			s.words[i] &^= tword
-		} else {
-			s.words = append(s.words, tword)
-		}
+	for i, tword := range t.words[:len(s.words)] {
+		s.words[i] &^= tword
 	}
 }
 
