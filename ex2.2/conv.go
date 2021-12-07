@@ -67,7 +67,7 @@ func newMeasurement(f float64, unit string) (Measurement, error) {
 	switch unit {
 	case "m":
 		return FromMeters(f), nil
-	case "\"", "ft":
+	case "'", "ft":
 		return FromFeet(f), nil
 	case "c":
 		return FromCelcius(f), nil
@@ -79,7 +79,7 @@ func newMeasurement(f float64, unit string) (Measurement, error) {
 }
 
 func printMeasurement(s string) {
-	re := regexp.MustCompile(`(-?\d+(?:\.\d+)?)([A-Za-z]+)`)
+	re := regexp.MustCompile(`(-?\d+(?:\.\d+)?)([A-Za-z]+|')`)
 	match := re.FindStringSubmatch(s)
 	if match == nil {
 		log.Fatalf("Expecting <number><unit>, got %q", s)
