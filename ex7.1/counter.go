@@ -2,9 +2,8 @@
 package counter
 
 import (
+	"bufio"
 	"fmt"
-	"unicode"
-	"unicode/utf8"
 )
 
 type LineCounter struct {
@@ -12,10 +11,14 @@ type LineCounter struct {
 }
 
 func (c *LineCounter) Write(p []byte) (n int, err error) {
-	for _, b := range p {
-		if b == '\n' {
-			c.lines++
+	for i, advance, atEOF := 0, 0, false; i < len(p); i += advance {
+		var token []byte
+		advance, token, _ = bufio.ScanLines(p[i:], atEOF)
+		if token == nil {
+			atEOF = true
+			continue
 		}
+		c.lines++
 	}
 	return len(p), nil
 }
@@ -33,60 +36,19 @@ type WordCounter struct {
 	inWord bool
 }
 
-func leadingSpaces(p []byte) int {
-	count := 0
-	cur := 0
-	for cur < len(p) {
-		r, size := utf8.DecodeRune(p[cur:])
-		if !unicode.IsSpace(r) {
-			return count
-		}
-		cur += size
-		count++
-	}
-	return count
-}
-
-func leadingNonSpaces(p []byte) int {
-	count := 0
-	cur := 0
-	for cur < len(p) {
-		r, size := utf8.DecodeRune(p[cur:])
-		if unicode.IsSpace(r) {
-			return count
-		}
-		cur += size
-		count++
-	}
-	return count
-}
-
-// A !IsSpace() -> IsSpace() transition is counted as a word.
-//
-// I couldn't figure out how to use bufio.ScanWords without either
-// double-counting words split across buffer boundaries, giving incorrect
-// intermediate counts, or doing some really awkward buffer manipulation.
 func (c *WordCounter) Write(p []byte) (n int, err error) {
-	cur := 0
-	n = len(p)
-	for {
-		spaces := leadingSpaces(p[cur:])
-		cur += spaces
-		if spaces > 0 {
-			c.inWord = false
+	for i, advance, atEOF := 0, 0, false; i < len(p); i += advance {
+		var token []byte
+		advance, token, _ = bufio.ScanWords(p[i:], atEOF)
+		// according to the source code of bufio.ScanWords,
+		// we should request the final, incomplete word explicitly with atEOF set to true
+		if token == nil {
+			atEOF = true
+			continue
 		}
-		if cur == len(p) {
-			return
-		}
-		if !c.inWord {
-			c.words++
-		}
-		c.inWord = true
-		cur += leadingNonSpaces(p[cur:])
-		if cur == len(p) {
-			return
-		}
+		c.words++
 	}
+	return len(p), nil
 }
 
 func (c *WordCounter) N() int {
