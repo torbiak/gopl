@@ -2,23 +2,16 @@
 package anagram
 
 func isAnagram(a, b string) bool {
-	aFreq := make(map[rune]int)
-	for _, c := range a {
-		aFreq[c]++
+	if len(a) != len(b) {
+		return false
 	}
-	bFreq := make(map[rune]int)
-	for _, c := range b {
-		bFreq[c]++
+
+	bitset := 0
+	for _, v := range a {
+		bitset = bitset ^ int(v)
 	}
-	for k, v := range aFreq {
-		if bFreq[k] != v {
-			return false
-		}
+	for _, v := range b {
+		bitset = bitset ^ int(v)
 	}
-	for k, v := range bFreq {
-		if aFreq[k] != v {
-			return false
-		}
-	}
-	return true
+	return bitset == 0
 }
