@@ -51,8 +51,8 @@ func (s *IntSet) IntersectWith(t *IntSet) {
 			s.words[i] &= tword
 		}
 	}
-	for i := len(t.words); i < len(s.words); i++ {
-		s.words[i] = 0
+	if len(s.words) > len(t.words) {
+		s.words = s.words[:len(t.words)]
 	}
 }
 
